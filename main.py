@@ -24,11 +24,11 @@ class Main(App):
         
 
         btn_layer = Button(text = "Слой", size_hint = (0, 0), pos_hint = {"x" : .75},background_color=yellow)
-        btn_layer.bind(on_press=self.on_press_gender)
+        btn_layer.bind(on_press=self.on_press_layer)
         layout.add_widget(btn_layer)
 
         btn_rotate = Button(text = "Поворот", size_hint = (0, 0), pos_hint = {"x" : .75},background_color=yellow)
-        btn_rotate.bind(on_press=self.on_press_gender)
+        btn_rotate.bind(on_press=self.on_press_rotate)
         layout.add_widget(btn_rotate)
 
         main_layout.add_widget(layout)
