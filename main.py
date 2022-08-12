@@ -6,6 +6,7 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.image import Image
 from kivy.core.window import Window
 
+
 Window.clearcolor = (0, .8, .9, 1) #установка цвета нового фона
 yellow = (2.2,2.4,0.2,1)
 
@@ -15,7 +16,7 @@ class man1(Screen):
         main_layout = BoxLayout(orientation = "horizontal")
         layout = BoxLayout(orientation = "vertical", spacing = 5, pos_hint = {"x" : 0.2, "y" : 0.6})
 
-        body = Image(source = "Man1.png", pos_hint = {"center_y" : .5, "center_x" : .5, "x" : .9})
+        body = Image(source = "Images_people/Man1.png", pos_hint = {"center_y" : .5, "center_x" : .5, "x" : .9})
 
         main_layout.add_widget(body)
 
@@ -52,7 +53,7 @@ class man2(Screen):
         main_layout = BoxLayout(orientation = "horizontal")
         layout = BoxLayout(orientation = "vertical", spacing = 5, pos_hint = {"x" : 0.2, "y" : 0.6})
 
-        body = Image(source = "Man2.png", pos_hint = {"center_y" : .5, "center_x" : .5, "x" : .9})
+        body = Image(source = "Images_people/Man2.png", pos_hint = {"center_y" : .5, "center_x" : .5, "x" : .9})
         main_layout.add_widget(body)
 
         btn_gender = Button(text = "Пол", size_hint = (None, None), size = (70, 70), pos_hint = {"x" : .75}, background_color = yellow,)
@@ -87,7 +88,7 @@ class woman1(Screen):
         main_layout = BoxLayout(orientation = "horizontal")
         layout = BoxLayout(orientation = "vertical", spacing = 5, pos_hint = {"x" : 0.2, "y" : 0.6})
 
-        body = Image(source = "woman1.png", pos_hint = {"center_y" : .5, "center_x" : .5, "x" : .9})
+        body = Image(source = "Images_people/Woman1.png", pos_hint = {"center_y" : .5, "center_x" : .5, "x" : .9})
 
         main_layout.add_widget(body)
 
@@ -123,7 +124,7 @@ class woman2(Screen):
         main_layout = BoxLayout(orientation = "horizontal")
         layout = BoxLayout(orientation = "vertical", spacing = 5, pos_hint = {"x" : 0.2, "y" : 0.6})
 
-        body = Image(source = "woman2.png", pos_hint = {"center_y" : .5, "center_x" : .5, "x" : .9})
+        body = Image(source = "Images_people/Woman2.png", pos_hint = {"center_y" : .5, "center_x" : .5, "x" : .9})
 
         main_layout.add_widget(body)
 
@@ -155,7 +156,7 @@ class woman2(Screen):
 
 class Screen(App):
     def build(self):
-        sm = ScreenManager()
+        sm = ScreenManager(transition=NoTransition())
         sm.add_widget(man1(name = 'man1'))
         sm.add_widget(man2(name = 'man2'))
         sm.add_widget(woman1(name = 'woman1'))
