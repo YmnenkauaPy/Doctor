@@ -23,7 +23,7 @@ class Man1(Screen):
         btn_gender = Button(text = "Пол", size_hint = (None, None), size = (70, 70), pos_hint = {"x" : .75}, background_color = yellow,)
         btn_gender.on_press = self.on_press_gender
         layout.add_widget(btn_gender)
-
+        
 
         btn_layer = Button(text = "Слой", size_hint = (None, None), size = (70, 70), pos_hint = {"x" : .75}, background_color = yellow)
         btn_layer.on_press = self.on_press_layer
@@ -42,7 +42,7 @@ class Man1(Screen):
 
     def on_press_layer(self):
         self.manager.current = 'Bone1'
-
+    
     def rotate(self):
         self.manager.current = 'Man2'
 
@@ -59,7 +59,7 @@ class Man2(Screen):
         btn_gender = Button(text = "Пол", size_hint = (None, None), size = (70, 70), pos_hint = {"x" : .75}, background_color = yellow,)
         btn_gender.on_press = self.gender
         layout.add_widget(btn_gender)
-
+        
 
         btn_layer = Button(text = "Слой", size_hint = (None, None), size = (70, 70), pos_hint = {"x" : .75}, background_color = yellow)
         btn_layer.on_press = self.layer
@@ -78,7 +78,7 @@ class Man2(Screen):
 
     def layer(self):
         self.manager.current = 'Bone2'
-
+    
     def rotate(self):
         self.manager.current = 'Man1'
 
@@ -93,12 +93,12 @@ class Woman1(Screen):
         main_layout.add_widget(body)
 
         btn_gender = Button(text = "Пол", size_hint = (None, None), size = (70, 70), pos_hint = {"x" : .75}, background_color = yellow,)
-        btn_gender.on_press = self.gender
+        btn_gender.on_press = self.on_press_gender
         layout.add_widget(btn_gender)
-
+        
 
         btn_layer = Button(text = "Слой", size_hint = (None, None), size = (70, 70), pos_hint = {"x" : .75}, background_color = yellow)
-        btn_layer.on_press = self.layer
+        btn_layer.on_press = self.on_press_layer
         layout.add_widget(btn_layer)
 
         btn_rotate = Button(text = "Поворот", size_hint = (None, None), size = (70, 70), pos_hint = {"x" : .75}, background_color = yellow)
@@ -109,12 +109,12 @@ class Woman1(Screen):
 
         self.add_widget(main_layout)
 
-    def gender(self):
+    def on_press_gender(self):
         self.manager.current = 'Man1'
 
-    def layer(self):
+    def on_press_layer(self):
         self.manager.current = 'Bone1'
-
+    
     def rotate(self):
         self.manager.current = 'Woman2'
 
@@ -129,12 +129,12 @@ class Woman2(Screen):
         main_layout.add_widget(body)
 
         btn_gender = Button(text = "Пол", size_hint = (None, None), size = (70, 70), pos_hint = {"x" : .75}, background_color = yellow,)
-        btn_gender.on_press = self.gender
+        btn_gender.on_press = self.on_press_gender
         layout.add_widget(btn_gender)
-
+        
 
         btn_layer = Button(text = "Слой", size_hint = (None, None), size = (70, 70), pos_hint = {"x" : .75}, background_color = yellow)
-        btn_layer.on_press = self.layer
+        btn_layer.on_press = self.on_press_layer
         layout.add_widget(btn_layer)
 
         btn_rotate = Button(text = "Поворот", size_hint = (None, None), size = (70, 70), pos_hint = {"x" : .75}, background_color = yellow)
@@ -145,10 +145,10 @@ class Woman2(Screen):
 
         self.add_widget(main_layout)
 
-    def gender(self):
+    def on_press_gender(self):
         self.manager.current = 'Man2'
 
-    def layer(self):
+    def on_press_layer(self):
         self.manager.current = 'Bone2'
 
     def rotate(self):
@@ -164,8 +164,13 @@ class Bone1(Screen):
 
         main_layout.add_widget(self.body)
 
+        btn_gender = Button(text = "Пол", size_hint = (None, None), size = (70, 70), pos_hint = {"x" : .75}, background_color = yellow,)
+        #btn_gender.on_press = self.on_press_gender
+        layout.add_widget(btn_gender)
+        
+
         btn_layer = Button(text = "Слой", size_hint = (None, None), size = (70, 70), pos_hint = {"x" : .75}, background_color = yellow)
-        btn_layer.on_press = self.layer
+        btn_layer.on_press = self.on_press_layer
         layout.add_widget(btn_layer)
 
         btn_rotate = Button(text = "Поворот", size_hint = (None, None), size = (70, 70), pos_hint = {"x" : .75}, background_color = yellow)
@@ -176,7 +181,7 @@ class Bone1(Screen):
 
         self.add_widget(main_layout)
 
-    def layer(self):
+    def on_press_layer(self):
         self.manager.current = 'Man1'
 
     def rotate(self):
@@ -192,9 +197,13 @@ class Bone2(Screen):
 
         main_layout.add_widget(self.body)
 
+        btn_gender = Button(text = "Пол", size_hint = (None, None), size = (70, 70), pos_hint = {"x" : .75}, background_color = yellow,)
+        #btn_gender.on_press = self.on_press_gender
+        layout.add_widget(btn_gender)
+        
 
         btn_layer = Button(text = "Слой", size_hint = (None, None), size = (70, 70), pos_hint = {"x" : .75}, background_color = yellow)
-        btn_layer.on_press = self.layer
+        btn_layer.on_press = self.on_press_layer
         layout.add_widget(btn_layer)
 
         btn_rotate = Button(text = "Поворот", size_hint = (None, None), size = (70, 70), pos_hint = {"x" : .75}, background_color = yellow)
@@ -205,7 +214,7 @@ class Bone2(Screen):
 
         self.add_widget(main_layout)
 
-    def layer(self):
+    def on_press_layer(self):
         self.manager.current = 'Man2'
 
     def rotate(self):
@@ -220,7 +229,7 @@ class Screen(App):
         sm.add_widget(Woman2(name = 'Woman2'))
         sm.add_widget(Bone1(name='Bone1'))
         sm.add_widget(Bone2(name='Bone2'))
-
+        
         return sm
 
 app = Screen()
