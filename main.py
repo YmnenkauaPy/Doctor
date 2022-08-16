@@ -1,6 +1,6 @@
 from kivy.app import App 
 from kivy.uix.button import Button
-from kivy.uix.switch import Switch
+from kivy.uix.label import Label
 from kivy.uix.screenmanager import ScreenManager, Screen, NoTransition
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.floatlayout import FloatLayout
@@ -17,24 +17,25 @@ class Man1(Screen):
         main_layout = BoxLayout(orientation = "horizontal")
         layout = BoxLayout(orientation = "vertical", spacing = 5, pos_hint = {"x" : 0.2, "y" : 0.6})
         
-        fl_layout=FloatLayout()
-        body = Image(source = "Images_people/Man1.png",pos=(50,-10))
+        fl_layout = FloatLayout()
+        body = Image(source = "Images_people/Man1.png", pos = (50, -10))
         fl_layout.add_widget(body)
         main_layout.add_widget(fl_layout)
         
-        btn_biceps=Button(background_normal="An_images/Circle.png",background_down="An_images/Circle.png",
-                          size_hint=(None,None),size=(20,20),pos=(300,415))
-        btn_biceps.bind(on_press=self.on_press_biceps)
+        self.fl_layout2 = None
+
+        btn_biceps = Button(background_normal = "images/Circle.png", background_down = "images/Circle.png",
+                          size_hint = (None, None), size = (20, 20), pos = (300, 415))
+        btn_biceps.bind(on_press = self.on_press_biceps)
         
         fl_layout.add_widget(btn_biceps)
         
         btn_gender = Button(text = "Пол", size_hint = (None, None), size = (70, 70), pos_hint = {"x" : .75}, background_color = yellow,)
-        btn_gender.on_press = self.on_press_gender
+        btn_gender.on_press = self.gender
         layout.add_widget(btn_gender)
         
-
         btn_layer = Button(text = "Слой", size_hint = (None, None), size = (70, 70), pos_hint = {"x" : .75}, background_color = yellow)
-        btn_layer.on_press = self.on_press_layer
+        btn_layer.on_press = self.layer
         layout.add_widget(btn_layer)
 
         btn_rotate = Button(text = "Поворот", size_hint = (None, None), size = (70, 70), pos_hint = {"x" : .75}, background_color = yellow)
@@ -44,15 +45,28 @@ class Man1(Screen):
         main_layout.add_widget(layout)
 
         self.add_widget(main_layout)
-    def on_press_biceps(self,instance):
+
+    def on_press_biceps(self, instance):
         print("Это бицепс...")
 
-    def on_press_gender(self):
+    def gender(self):
         self.manager.current = 'Woman1'
 
-    def on_press_layer(self):
+    def layer(self):
+        if not self.fl_layout2:
+            self.fl_layout2 = FloatLayout()
+            self.box = Button(background_normal = "images/Bone.png", background_down = "images/Bone.png",
+                        size_hint = (None, None), size = (100, 100), pos = (290, 350))
+            self.box.on_press = self.skeleton
+            self.fl_layout2.add_widget(self.box)
+            self.add_widget(self.fl_layout2)
+        else:
+            self.remove_widget(self.fl_layout2)
+
+    def skeleton(self):
+        self.remove_widget(self.fl_layout2)
         self.manager.current = 'Bone1'
-    
+
     def rotate(self):
         self.manager.current = 'Man2'
 
@@ -87,6 +101,15 @@ class Man2(Screen):
         self.manager.current = 'Woman2'
 
     def layer(self):
+        self.fl_layout2 = FloatLayout()
+        self.box = Button(background_normal = "images/Bone.png", background_down = "images/Bone.png",
+                    size_hint = (None, None), size = (100, 100), pos = (290, 350))
+        self.box.on_press = self.skeleton
+        self.fl_layout2.add_widget(self.box)
+        self.add_widget(self.fl_layout2)
+
+    def skeleton(self):
+        self.fl_layout2.remove_widget(self.box)
         self.manager.current = 'Bone2'
     
     def rotate(self):
