@@ -3,6 +3,7 @@ from kivy.uix.button import Button
 from kivy.uix.switch import Switch
 from kivy.uix.screenmanager import ScreenManager, Screen, NoTransition
 from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.image import Image
 from kivy.core.window import Window
 
@@ -15,11 +16,18 @@ class Man1(Screen):
         super().__init__(**kwargs)
         main_layout = BoxLayout(orientation = "horizontal")
         layout = BoxLayout(orientation = "vertical", spacing = 5, pos_hint = {"x" : 0.2, "y" : 0.6})
-
-        body = Image(source = "Images_people/Man1.png", pos_hint = {"center_y" : .5, "center_x" : .5, "x" : .9})
-
-        main_layout.add_widget(body)
-
+        
+        fl_layout=FloatLayout()
+        body = Image(source = "Images_people/Man1.png",pos=(50,-10))
+        fl_layout.add_widget(body)
+        main_layout.add_widget(fl_layout)
+        
+        btn_biceps=Button(background_normal="An_images/Circle.png",background_down="An_images/Circle.png",
+                          size_hint=(None,None),size=(20,20),pos=(300,415))
+        btn_biceps.bind(on_press=self.on_press_biceps)
+        
+        fl_layout.add_widget(btn_biceps)
+        
         btn_gender = Button(text = "Пол", size_hint = (None, None), size = (70, 70), pos_hint = {"x" : .75}, background_color = yellow,)
         btn_gender.on_press = self.on_press_gender
         layout.add_widget(btn_gender)
@@ -36,6 +44,8 @@ class Man1(Screen):
         main_layout.add_widget(layout)
 
         self.add_widget(main_layout)
+    def on_press_biceps(self,instance):
+        print("Это бицепс...")
 
     def on_press_gender(self):
         self.manager.current = 'Woman1'
