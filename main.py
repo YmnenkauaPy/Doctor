@@ -9,7 +9,6 @@ from kivy.core.window import Window
 from kivy.uix.widget import Widget
 from kivy.graphics import (Color,Rectangle)
 
-
 Window.clearcolor = (0, .8, .9, 1) #установка цвета нового фона
 yellow = (2.2,2.4,0.2,1)
 
@@ -49,19 +48,7 @@ class Man1(Screen):
         self.add_widget(main_layout)
 
     def on_press_biceps(self, instance):
-        self.back_gr=Button(background_color=(0,0,0,1),size_hint=(None,None),size=(600,500),pos=(50,50))
-        self.back_gr.opacity=0.8
-        self.btn_close_bg = Button(text = "Нажми, чтобы закрыть", size_hint = (None, None), size = (190, 50), pos=(400,0), background_color = yellow)
-        self.btn_close_bg.bind(on_press=self.close_info)
-        self.fl_layout.add_widget(self.back_gr)
-        self.fl_layout.add_widget(self.btn_close_bg)
-
-
-        print("Это бицепс...")
-
-    def close_info(self,instance):
-        self.fl_layout.remove_widget(self.back_gr)
-        self.fl_layout.remove_widget(self.btn_close_bg)
+        self.manager.current = 'Print_info'
         
     def gender(self):
         self.manager.current = 'Woman1'
@@ -77,13 +64,11 @@ class Man1(Screen):
         else:
             self.remove_widget(self.fl_layout2)
             self.fl_layout2=None
-        
 
     def skeleton(self):
         self.remove_widget(self.fl_layout2)
         self.fl_layout2=None
         self.manager.current = 'Bone1'
-        
 
     def rotate(self):
         self.manager.current = 'Man2'
@@ -144,12 +129,12 @@ class Woman1(Screen):
         main_layout.add_widget(body)
 
         btn_gender = Button(text = "Пол", size_hint = (None, None), size = (70, 70), pos_hint = {"x" : .75}, background_color = yellow,)
-        btn_gender.on_press = self.on_press_gender
+        btn_gender.on_press = self.gender
         layout.add_widget(btn_gender)
         
 
         btn_layer = Button(text = "Слой", size_hint = (None, None), size = (70, 70), pos_hint = {"x" : .75}, background_color = yellow)
-        btn_layer.on_press = self.on_press_layer
+        btn_layer.on_press = self.layer
         layout.add_widget(btn_layer)
 
         btn_rotate = Button(size_hint = (None, None), size = (70, 70), pos_hint = {"x" : .75}, background_normal = "images/Rotate.png", background_down = "images/Rotate.png")
@@ -160,10 +145,19 @@ class Woman1(Screen):
 
         self.add_widget(main_layout)
 
-    def on_press_gender(self):
+    def gender(self):
         self.manager.current = 'Man1'
 
-    def on_press_layer(self):
+    def layer(self):
+        self.fl_layout2 = FloatLayout()
+        self.box = Button(background_normal = "images/Bone.png", background_down = "images/Bone.png",
+                    size_hint = (None, None), size = (100, 100), pos = (290, 350))
+        self.box.on_press = self.skeleton
+        self.fl_layout2.add_widget(self.box)
+        self.add_widget(self.fl_layout2)
+
+    def skeleton(self):
+        self.fl_layout2.remove_widget(self.box)
         self.manager.current = 'Bone1'
     
     def rotate(self):
@@ -180,12 +174,12 @@ class Woman2(Screen):
         main_layout.add_widget(body)
 
         btn_gender = Button(text = "Пол", size_hint = (None, None), size = (70, 70), pos_hint = {"x" : .75}, background_color = yellow,)
-        btn_gender.on_press = self.on_press_gender
+        btn_gender.on_press = self.gender
         layout.add_widget(btn_gender)
         
 
         btn_layer = Button(text = "Слой", size_hint = (None, None), size = (70, 70), pos_hint = {"x" : .75}, background_color = yellow)
-        btn_layer.on_press = self.on_press_layer
+        btn_layer.on_press = self.layer
         layout.add_widget(btn_layer)
 
         btn_rotate = Button(size_hint = (None, None), size = (70, 70), pos_hint = {"x" : .75}, background_normal = "images/Rotate.png", background_down = "images/Rotate.png")
@@ -196,10 +190,19 @@ class Woman2(Screen):
 
         self.add_widget(main_layout)
 
-    def on_press_gender(self):
+    def gender(self):
         self.manager.current = 'Man2'
 
-    def on_press_layer(self):
+    def layer(self):
+        self.fl_layout2 = FloatLayout()
+        self.box = Button(background_normal = "images/Bone.png", background_down = "images/Bone.png",
+                    size_hint = (None, None), size = (100, 100), pos = (290, 350))
+        self.box.on_press = self.skeleton
+        self.fl_layout2.add_widget(self.box)
+        self.add_widget(self.fl_layout2)
+
+    def skeleton(self):
+        self.fl_layout2.remove_widget(self.box)
         self.manager.current = 'Bone2'
 
     def rotate(self):
@@ -271,6 +274,25 @@ class Bone2(Screen):
     def rotate(self):
         self.manager.current = 'Bone1'
 
+class Print_info(Screen):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+        float_layout=FloatLayout()
+        
+        back_gr=Button(text = "BG",background_color=(0,0,0,1),size_hint=(None,None),size=(600,500),pos=(50,50))
+        back_gr.opacity=0.8
+        float_layout.add_widget(back_gr)
+        
+        btn_close_bg = Button(text = "Нажми, чтобы закрыть", size_hint = (None, None), size = (190, 50), pos=(400,0), background_color = yellow)
+        btn_close_bg.bind(on_press=self.close_info)
+        
+        float_layout.add_widget(btn_close_bg)
+
+        self.add_widget(float_layout)
+    def close_info(self,instance):
+        self.manager.current = "Man1"
+
 class Screen(App):
     def build(self):
         sm = ScreenManager(transition=NoTransition())
@@ -280,6 +302,7 @@ class Screen(App):
         sm.add_widget(Woman2(name = 'Woman2'))
         sm.add_widget(Bone1(name='Bone1'))
         sm.add_widget(Bone2(name='Bone2'))
+        sm.add_widget(Print_info(name='Print_info'))
         
         return sm
 
