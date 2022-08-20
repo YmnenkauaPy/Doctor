@@ -13,13 +13,13 @@ from kivy.clock import Clock
 
 gender_="man"  #Мужчина смотрит лицом в камеру
 side_="forward"     #Мужчина смотрит лицом в камеру
-
+side2 = "forward" #скелет смотрит прямо
 
 key = "Двоголовий м'яз плеча"
 Window.clearcolor = (0, .8, .9, 1) #установка цвета нового фона
 yellow = (2.2,2.4,0.2,1)
 
-class Man1(Screen):
+class People(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         main_layout = BoxLayout(orientation = "horizontal")
@@ -105,7 +105,7 @@ class Man1(Screen):
     def skeleton(self):
         self.remove_widget(self.fl_layout2)
         self.fl_layout2=None
-        self.manager.current = 'Bone1'
+        self.manager.current = 'Skeleton'
 #########################################################################################################################        
     def gender(self):
         global gender_
@@ -137,13 +137,13 @@ class Man1(Screen):
             self.fl_layout.remove_widget(self.btn_biceps)
             self.fl_layout.remove_widget(self.tailor_muscle)
             side_="back"
-            print(side_)
+    
         elif gender_=="woman" and side_=="forward":
             self.body.source="Images_people/Woman2.png"     #woman2
             self.fl_layout.remove_widget(self.btn_biceps)
             self.fl_layout.remove_widget(self.tailor_muscle)
             side_="back"
-            print(side_)
+
         elif gender_ =="man" and side_ =="back":
             self.body.source="Images_people/Man1.png"   #man1
             self.fl_layout.add_widget(self.btn_biceps)
@@ -151,7 +151,7 @@ class Man1(Screen):
             self.btn_biceps.pos=(300,405)   #biceps
             self.tailor_muscle.pos=(260,265)    #tailor
             side_="forward"
-            print(side_)
+
         elif gender_=="woman" and side_ =="back":
             self.body.source="Images_people/Woman1.png"     #woman1
             self.fl_layout.add_widget(self.btn_biceps)
@@ -159,9 +159,9 @@ class Man1(Screen):
             self.btn_biceps.pos=(320,428)   #biceps
             self.tailor_muscle.pos=(290,265)  #tailor
             side_="forward"
-            print(side_)
+
 ###########################################################################################################################
-class Bone1(Screen):
+class Skeleton(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         main_layout = BoxLayout(orientation = "horizontal")
@@ -221,74 +221,16 @@ class Bone1(Screen):
     def muscle_layer(self):
         self.remove_widget(self.fl_layout2)
         self.fl_layout2=None
-        self.manager.current = 'Man1'
+        self.manager.current = 'People'
 
     def rotate(self):
-        self.manager.current = 'Bone2'
-        
-class Bone2(Screen):
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        main_layout = BoxLayout(orientation = "horizontal")
-        layout = BoxLayout(orientation = "vertical", spacing = 5, pos_hint = {"x" : 0.2, "y" : 0.6})
-
-        self.body = Image(source = "Images_people/Bone2.png", pos_hint = {"center_y" : .5, "center_x" : .5, "x" : .9})
-        main_layout.add_widget(self.body)
-
-        self.fl_layout2 = None
-
-        btn_gender = Button(text = "Пол", size_hint = (None, None), size = (70, 70), pos_hint = {"x" : .75}, background_color = yellow)
-        layout.add_widget(btn_gender)
-        
-
-        btn_layer = Button(background_normal = "images/Bone.png", background_down = "images/Bone.png", size_hint = (None, None), size = (80, 80), pos_hint = {"x" : .75})
-        btn_layer.on_press = self.layer
-        layout.add_widget(btn_layer)
-
-        btn_rotate = Button(size_hint = (None, None), size = (70, 70), pos_hint = {"x" : .75}, background_normal = "images/Rotate.png", background_down = "images/Rotate.png")
-        btn_rotate.on_press = self.rotate
-        layout.add_widget(btn_rotate)
-
-        main_layout.add_widget(layout)
-
-        self.add_widget(main_layout)
-
-    def layer(self):
-        if not self.fl_layout2:
-            self.fl_layout2 = FloatLayout()
-
-            self.frame = Button(background_normal = "images/frame.png", background_down = "images/frame.png",
-                        size_hint = (None, None), size = (635, 125), pos = (80, 300))
-            self.bone = Button(background_normal = "images/Bone.png", background_down = "images/Bone.png",
-                        size_hint = (None, None), size = (125, 125), pos = (85, 300))
-            self.muscle = Button(background_normal = "images/muscle.png", background_down = "images/muscle.png",
-                        size_hint = (None, None), size = (125, 125), pos = (210, 300))
-            self.nerves = Button(background_normal = "images/nerves.png", background_down = "images/nerves.png",
-                        size_hint = (None, None), size = (125, 125), pos = (335, 300))
-            self.organs = Button(background_normal = "images/organ.png", background_down = "images/organ.png",
-                        size_hint = (None, None), size = (125, 125), pos = (460, 300))
-            self.skin = Button(background_normal = "images/skin.png", background_down = "images/skin.png",
-                        size_hint = (None, None), size = (125, 125), pos = (585, 300))
-                        
-            self.muscle.on_press = self.muscle_layer
-            self.fl_layout2.add_widget(self.frame)
-            self.fl_layout2.add_widget(self.bone)
-            self.fl_layout2.add_widget(self.muscle)
-            self.fl_layout2.add_widget(self.nerves)
-            self.fl_layout2.add_widget(self.organs)
-            self.fl_layout2.add_widget(self.skin)
-            self.add_widget(self.fl_layout2)
+        global side2
+        if side2 == "forward":
+            self.body.source = "Images_people/Bone2.png"
+            side2 = "back"
         else:
-            self.remove_widget(self.fl_layout2)
-            self.fl_layout2 = None
-
-    def muscle_layer(self):
-        self.remove_widget(self.fl_layout2)
-        self.fl_layout2=None
-        self.manager.current = 'Man1'
-
-    def rotate(self):
-        self.manager.current = 'Bone1'
+            self.body.source = "Images_people/Bone1.png"
+            side2 = "forward"
 
 class Print_info(Screen):
     def __init__(self, **kwargs):
@@ -340,14 +282,13 @@ class Print_info(Screen):
         self.injury.text = Dict_of_muscles[key]['Травми/Хвороби']
 
     def close_info(self, instance):
-        self.manager.current = "Man1"
+        self.manager.current = "People"
 
 class Screen(App):
     def build(self):
         sm = ScreenManager(transition=NoTransition())
-        sm.add_widget(Man1(name = 'Man1'))
-        sm.add_widget(Bone1(name='Bone1'))
-        sm.add_widget(Bone2(name='Bone2'))
+        sm.add_widget(People(name = 'People'))
+        sm.add_widget(Skeleton(name='Skeleton'))
         sm.add_widget(Print_info(name='Print_info'))
         
         return sm
