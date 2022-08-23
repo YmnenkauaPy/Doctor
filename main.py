@@ -67,9 +67,9 @@ class People(Screen):
         self.fl_layout.add_widget(self.Quadriceps_thigh_muscle)
         
         
-        btn_gender = Button(text = "Пол", size_hint = (None, None), size = (70, 70), pos_hint = {"x" : .75}, background_color = yellow)
-        btn_gender.on_press = self.gender
-        layout.add_widget(btn_gender)
+        self.btn_gender = Button(background_normal = "images/Switch_blue.png", size_hint = (None, None), size = (90, 45), pos_hint = {"x" : .75})
+        self.btn_gender.on_press = self.gender
+        layout.add_widget(self.btn_gender)
         
         btn_layer = Button(background_normal = "images/muscle.png", background_down = "images/muscle.png", size_hint = (None, None), size = (80, 80), pos_hint = {"x" : .75})
         btn_layer.on_press = self.layer
@@ -155,6 +155,7 @@ class People(Screen):
         global side_
         if gender_=="man" and side_=="forward":
             self.body.source="Images_people/Woman1.png"   #woman1
+            self.btn_gender.background_normal = 'images/Switch_pink.png'
             self.btn_biceps.pos=(320,428)   #biceps
             self.tailor_muscle.pos=(290,265) #tailor
             self.rectus_femoris_muscle.pos=(305, 240) #rectus
@@ -163,6 +164,7 @@ class People(Screen):
             
         elif gender_=="woman" and side_=="forward":
             self.body.source="Images_people/Man1.png"   #man1
+            self.btn_gender.background_normal = 'images/Switch_blue.png'
             self.btn_biceps.pos=(300,415)   #biceps
             self.tailor_muscle.pos=(260,265)    #tailor
             self.rectus_femoris_muscle.pos=(270, 240) #rectus
@@ -171,11 +173,13 @@ class People(Screen):
             
         elif gender_ =="man" and side_ =="back":
             self.body.source="Images_people/Woman2.png" #woman2
+            self.btn_gender.background_normal = 'images/Switch_pink.png'
             self.triceps.pos=(200,405)
             self.Gluteal_muscles.pos = (290, 265)
             gender_="woman"
         elif gender_=="woman" and side_ =="back":
             self.body.source="Images_people/Man2.png"   #man2
+            self.btn_gender.background_normal = 'images/Switch_blue.png'
             self.triceps.pos=(180,400)
             self.Gluteal_muscles.pos = (270, 260)
             gender_="man"
