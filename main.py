@@ -30,7 +30,7 @@ class People(Screen):
         layout = BoxLayout(orientation = "vertical", spacing = 5, pos_hint = {"x" : 0.2, "y" : 0.6})
         
         self.fl_layout = FloatLayout()
-        self.body = Image(source = "Images_people/Man1.png", pos = (50, -10))
+        self.body = Image(source = "Images_people/Man1.png", pos = (100, -10))
         self.fl_layout.add_widget(self.body)
         main_layout.add_widget(self.fl_layout)
         
@@ -38,34 +38,34 @@ class People(Screen):
         #кнопки с мышцами
 
         self.btn_biceps = Button(background_normal = "images/Circle.png", background_down = "images/Circle.png",       #Біцепс
-                          size_hint = (None, None), size = (20, 20), pos = (300, 415))
+                          size_hint = (None, None), size = (20, 20), pos = (350, 415))
         self.btn_biceps.bind(on_press = self.on_press_biceps)
         
         
         self.tailor_muscle = Button(background_normal = "images/Circle.png", background_down = "images/Circle.png",   #кравецький м'яз
-                          size_hint = (None, None), size = (20, 20), pos = (260, 265))
+                          size_hint = (None, None), size = (20, 20), pos = (310, 265))
         self.tailor_muscle.bind(on_press = self.on_press_tailor)
         
         
         self.rectus_femoris_muscle = Button(background_normal = "images/Circle.png", background_down = "images/Circle.png", #Прямий м'яз стегна
-                          size_hint = (None, None), size = (20, 20), pos = (270, 240))
+                          size_hint = (None, None), size = (20, 20), pos = (320, 240))
         self.rectus_femoris_muscle.bind(on_press = self.on_rectus_femoris)
         
         
         self.triceps = Button(background_normal = "images/Circle.png", background_down = "images/Circle.png",       #тріцепс
-                          size_hint = (None, None), size = (20, 20), pos = (180, 400))
+                          size_hint = (None, None), size = (20, 20), pos = (230, 400))
         self.triceps.bind(on_press = self.on_press_triceps)
 
         self.Quadriceps_thigh_muscle = Button(background_normal = "images/Circle.png", background_down = "images/Circle.png",       #квадріцепс
-                          size_hint = (None, None), size = (20, 20), pos = (255, 210))
+                          size_hint = (None, None), size = (20, 20), pos = (305, 210))
         self.Quadriceps_thigh_muscle.bind(on_press = self.on_quadriceps_thigh_muscle)
 
         self.Gluteal_muscles = Button(background_normal = "images/Circle.png", background_down = "images/Circle.png",       #попа
-                          size_hint = (None, None), size = (20, 20), pos = (270, 270))
+                          size_hint = (None, None), size = (20, 20), pos = (320, 270))
         self.Gluteal_muscles.bind(on_press = self.on_gluteal_muscles)
         
         self.lumbar = Button(background_normal = "images/Circle.png", background_down = "images/Circle.png",       #тріцепс
-                          size_hint = (None, None), size = (20, 20), pos = (198, 315))
+                          size_hint = (None, None), size = (20, 20), pos = (248, 315))
         self.lumbar.bind(on_press = self.on_press_lumbar)
         
         self.fl_layout.add_widget(self.lumbar)
@@ -132,17 +132,17 @@ class People(Screen):
             self.fl_layout2 = FloatLayout()
 
             self.frame = Button(background_normal = "images/frame.png", background_down = "images/frame.png",
-                        size_hint = (None, None), size = (635, 125), pos = (80, 300))
+                        size_hint = (None, None), size = (635, 125), pos = (130, 300))
             self.bone = Button(background_normal = "images/Bone.png", background_down = "images/Bone.png",
-                        size_hint = (None, None), size = (125, 125), pos = (85, 300))
+                        size_hint = (None, None), size = (125, 125), pos = (135, 300))
             self.muscle = Button(background_normal = "images/muscle.png", background_down = "images/muscle.png",
-                        size_hint = (None, None), size = (125, 125), pos = (210, 300))
+                        size_hint = (None, None), size = (125, 125), pos = (260, 300))
             self.nerves = Button(background_normal = "images/nerves.png", background_down = "images/nerves.png",
-                        size_hint = (None, None), size = (125, 125), pos = (335, 300))
+                        size_hint = (None, None), size = (125, 125), pos = (385, 300))
             self.organs = Button(background_normal = "images/organ.png", background_down = "images/organ.png",
-                        size_hint = (None, None), size = (125, 125), pos = (460, 300))
+                        size_hint = (None, None), size = (125, 125), pos = (510, 300))
             self.skin = Button(background_normal = "images/skin.png", background_down = "images/skin.png",
-                        size_hint = (None, None), size = (125, 125), pos = (585, 300))
+                        size_hint = (None, None), size = (125, 125), pos = (635, 300))
 
             self.bone.on_press = self.skeleton
 
@@ -170,38 +170,38 @@ class People(Screen):
             self.body.source="Images_people/Woman1.png"   #woman1
             self.btn_gender.background_normal = image_gender_btn_pink
             self.btn_gender.background_down = image_gender_btn_pink
-            self.btn_biceps.pos=(320,428)   #biceps
-            self.tailor_muscle.pos=(290,265) #tailor
-            self.rectus_femoris_muscle.pos=(305, 240) #rectus
-            self.Quadriceps_thigh_muscle.pos = (290, 200)
-            self.lumbar.pos=(235,300)
+            self.btn_biceps.pos=(370,428)   #biceps
+            self.tailor_muscle.pos=(340,265) #tailor
+            self.rectus_femoris_muscle.pos=(355, 240) #rectus
+            self.Quadriceps_thigh_muscle.pos = (340, 200)
+            self.lumbar.pos=(285,300)
             gender_="woman"
             
         elif gender_=="woman" and side_=="forward":
             self.body.source="Images_people/Man1.png"   #man1
             self.btn_gender.background_normal = image_gender_btn_blue
             self.btn_gender.background_down = image_gender_btn_blue
-            self.btn_biceps.pos=(300,415)   #biceps
-            self.tailor_muscle.pos=(260,265)    #tailor
-            self.rectus_femoris_muscle.pos=(270, 240) #rectus
-            self.lumbar.pos = (198,315)
-            self.Quadriceps_thigh_muscle.pos = (255, 200)
+            self.btn_biceps.pos=(350,415)   #biceps
+            self.tailor_muscle.pos=(310,265)    #tailor
+            self.rectus_femoris_muscle.pos=(320, 240) #rectus
+            self.lumbar.pos = (248,315)
+            self.Quadriceps_thigh_muscle.pos = (305, 200)
             gender_="man"
             
         elif gender_ =="man" and side_ =="back":
             self.body.source="Images_people/Woman2.png" #woman2
             self.btn_gender.background_normal = image_gender_btn_pink
             self.btn_gender.background_down = image_gender_btn_pink
-            self.triceps.pos=(200,405)
-            self.Gluteal_muscles.pos = (290, 275)
+            self.triceps.pos=(250,405)
+            self.Gluteal_muscles.pos = (340, 275)
             gender_="woman"
             
         elif gender_=="woman" and side_ =="back":
             self.body.source="Images_people/Man2.png"   #man2
             self.btn_gender.background_normal = image_gender_btn_blue
             self.btn_gender.background_down = image_gender_btn_blue
-            self.triceps.pos=(180,400)
-            self.Gluteal_muscles.pos = (270, 270)
+            self.triceps.pos=(230,400)
+            self.Gluteal_muscles.pos = (320, 270)
             gender_="man"
 #################################################################################################################################################
     def rotate(self):
@@ -216,8 +216,8 @@ class People(Screen):
             self.fl_layout.remove_widget(self.lumbar)
             self.fl_layout.add_widget(self.triceps)
             self.fl_layout.add_widget(self.Gluteal_muscles)
-            self.Gluteal_muscles.pos = (270, 270)
-            self.triceps.pos=(180, 400)
+            self.Gluteal_muscles.pos = (320, 270)
+            self.triceps.pos=(230, 400)
             side_="back"
 
         elif gender_=="woman" and side_=="forward":
@@ -229,8 +229,8 @@ class People(Screen):
             self.fl_layout.remove_widget(self.lumbar)
             self.fl_layout.add_widget(self.triceps)
             self.fl_layout.add_widget(self.Gluteal_muscles)
-            self.Gluteal_muscles.pos = (290, 275)
-            self.triceps.pos=(200,400)
+            self.Gluteal_muscles.pos = (340, 275)
+            self.triceps.pos=(250,400)
             side_="back"
 
         elif gender_ =="man" and side_ =="back":
@@ -242,11 +242,11 @@ class People(Screen):
             self.fl_layout.add_widget(self.lumbar)
             self.fl_layout.remove_widget(self.Gluteal_muscles)
             self.fl_layout.remove_widget(self.triceps)
-            self.lumbar.pos = (198,315)
-            self.btn_biceps.pos=(300,405)   #biceps
-            self.tailor_muscle.pos=(260,265)    #tailor
-            self.rectus_femoris_muscle.pos=(270, 240)   #rectus
-            self.Quadriceps_thigh_muscle.pos = (255, 200)
+            self.lumbar.pos = (248,315)
+            self.btn_biceps.pos=(350,405)   #biceps
+            self.tailor_muscle.pos=(310,265)    #tailor
+            self.rectus_femoris_muscle.pos=(320, 240)   #rectus
+            self.Quadriceps_thigh_muscle.pos = (305, 200)
             side_="forward"
 
         elif gender_=="woman" and side_ =="back":
@@ -258,11 +258,11 @@ class People(Screen):
             self.fl_layout.add_widget(self.lumbar)
             self.fl_layout.remove_widget(self.Gluteal_muscles)
             self.fl_layout.remove_widget(self.triceps)
-            self.lumbar.pos=(235,300)
-            self.btn_biceps.pos=(320,428)   #biceps
-            self.tailor_muscle.pos=(290,265)  #tailor
-            self.rectus_femoris_muscle.pos=(305, 240) #rectus
-            self.Quadriceps_thigh_muscle.pos = (290, 200)
+            self.lumbar.pos=(285,300)
+            self.btn_biceps.pos=(370,428)   #biceps
+            self.tailor_muscle.pos=(340,265)  #tailor
+            self.rectus_femoris_muscle.pos=(355, 240) #rectus
+            self.Quadriceps_thigh_muscle.pos = (340, 200)
             side_="forward"
 
 ###########################################################################################################################
@@ -272,7 +272,7 @@ class Skeleton(Screen):
         main_layout = BoxLayout(orientation = "horizontal")
         layout = BoxLayout(orientation = "vertical", spacing = 5, pos_hint = {"x" : 0.2, "y" : 0.6})
 
-        self.body = Image(source = "Images_people/Bone1.png", pos_hint = {"center_y" : .5, "center_x" : .5, "x" : .9})
+        self.body = Image(source = "Images_people/Bone1.png", pos = (100, -10))
         main_layout.add_widget(self.body)
 
         self.fl_layout2 = None
@@ -294,17 +294,17 @@ class Skeleton(Screen):
             self.fl_layout2 = FloatLayout()
 
             self.frame = Button(background_normal = "images/frame.png", background_down = "images/frame.png",
-                        size_hint = (None, None), size = (635, 125), pos = (80, 300))
+                        size_hint = (None, None), size = (635, 125), pos = (130, 300))
             self.bone = Button(background_normal = "images/Bone.png", background_down = "images/Bone.png",
-                        size_hint = (None, None), size = (125, 125), pos = (85, 300))
+                        size_hint = (None, None), size = (125, 125), pos = (135, 300))
             self.muscle = Button(background_normal = "images/muscle.png", background_down = "images/muscle.png",
-                        size_hint = (None, None), size = (125, 125), pos = (210, 300))
+                        size_hint = (None, None), size = (125, 125), pos = (260, 300))
             self.nerves = Button(background_normal = "images/nerves.png", background_down = "images/nerves.png",
-                        size_hint = (None, None), size = (125, 125), pos = (335, 300))
+                        size_hint = (None, None), size = (125, 125), pos = (385, 300))
             self.organs = Button(background_normal = "images/organ.png", background_down = "images/organ.png",
-                        size_hint = (None, None), size = (125, 125), pos = (460, 300))
+                        size_hint = (None, None), size = (125, 125), pos = (510, 300))
             self.skin = Button(background_normal = "images/skin.png", background_down = "images/skin.png",
-                        size_hint = (None, None), size = (125, 125), pos = (585, 300))
+                        size_hint = (None, None), size = (125, 125), pos = (605, 300))
 
             self.muscle.on_press = self.muscle_layer
 
