@@ -11,9 +11,13 @@ from kivy.graphics import (Color,Rectangle)
 from Text import Dict_of_muscles
 from kivy.clock import Clock
 
-gender_="man"  #Мужчина стоит
-side_="forward"     #Человек смотрит прямо
-side2 = "forward" #скелет смотрит прямо
+gender_muscles = "man"  #Мужчина стоит
+side_muscles = "forward"     #Человек смотрит прямо
+
+side2  = "forward" #скелет смотрит прямо
+
+gender_skin= "man"  #Мужчина стоит
+side_skin = "forward"     #Человек смотрит прямо
 
 image_gender_btn_blue = "images/Switch_blue.png"
 image_gender_btn_pink = "images/Switch_pink.png"
@@ -23,7 +27,7 @@ key = "Двоголовий м'яз плеча"
 Window.clearcolor = (0, .8, .9, 1) #установка цвета нового фона
 yellow = (2.2,2.4,0.2,1)
 
-class People(Screen):
+class Muscle(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         main_layout = BoxLayout(orientation = "horizontal")
@@ -145,6 +149,7 @@ class People(Screen):
                         size_hint = (None, None), size = (125, 125), pos = (635, 300))
 
             self.bone.on_press = self.skeleton
+            self.skin.on_press = self.skin_layer
 
             self.fl_layout2.add_widget(self.frame)
             self.fl_layout2.add_widget(self.bone)
@@ -161,12 +166,17 @@ class People(Screen):
         self.remove_widget(self.fl_layout2)
         self.fl_layout2=None
         self.manager.current = 'Skeleton'
+
+    def skin_layer(self):
+        self.remove_widget(self.fl_layout2)
+        self.fl_layout2=None
+        self.manager.current = 'Skin'
         
 #########################################################################################################################        
     def gender(self):
-        global gender_
-        global side_
-        if gender_=="man" and side_=="forward":
+        global gender_muscles
+        global side_muscles
+        if gender_muscles=="man" and side_muscles=="forward":
             self.body.source="Images_people/Woman1.png"   #woman1
             self.btn_gender.background_normal = image_gender_btn_pink
             self.btn_gender.background_down = image_gender_btn_pink
@@ -175,9 +185,9 @@ class People(Screen):
             self.rectus_femoris_muscle.pos=(355, 240) #rectus
             self.Quadriceps_thigh_muscle.pos = (340, 200)
             self.lumbar.pos=(285,300)
-            gender_="woman"
+            gender_muscles="woman"
             
-        elif gender_=="woman" and side_=="forward":
+        elif gender_muscles=="woman" and side_muscles=="forward":
             self.body.source="Images_people/Man1.png"   #man1
             self.btn_gender.background_normal = image_gender_btn_blue
             self.btn_gender.background_down = image_gender_btn_blue
@@ -186,28 +196,28 @@ class People(Screen):
             self.rectus_femoris_muscle.pos=(320, 240) #rectus
             self.lumbar.pos = (248,315)
             self.Quadriceps_thigh_muscle.pos = (305, 200)
-            gender_="man"
+            gender_muscles="man"
             
-        elif gender_ =="man" and side_ =="back":
+        elif gender_muscles =="man" and side_muscles =="back":
             self.body.source="Images_people/Woman2.png" #woman2
             self.btn_gender.background_normal = image_gender_btn_pink
             self.btn_gender.background_down = image_gender_btn_pink
             self.triceps.pos=(250,405)
             self.Gluteal_muscles.pos = (340, 275)
-            gender_="woman"
+            gender_muscles="woman"
             
-        elif gender_=="woman" and side_ =="back":
+        elif gender_muscles=="woman" and side_muscles =="back":
             self.body.source="Images_people/Man2.png"   #man2
             self.btn_gender.background_normal = image_gender_btn_blue
             self.btn_gender.background_down = image_gender_btn_blue
             self.triceps.pos=(230,400)
             self.Gluteal_muscles.pos = (320, 270)
-            gender_="man"
+            gender_muscles="man"
 #################################################################################################################################################
     def rotate(self):
-        global gender_
-        global side_
-        if gender_=="man" and side_=="forward":
+        global gender_muscles
+        global side_muscles
+        if gender_muscles=="man" and side_muscles=="forward":
             self.body.source="Images_people/Man2.png"       #man
             self.fl_layout.remove_widget(self.btn_biceps)
             self.fl_layout.remove_widget(self.tailor_muscle)
@@ -218,9 +228,9 @@ class People(Screen):
             self.fl_layout.add_widget(self.Gluteal_muscles)
             self.Gluteal_muscles.pos = (320, 270)
             self.triceps.pos=(230, 400)
-            side_="back"
+            side_muscles="back"
 
-        elif gender_=="woman" and side_=="forward":
+        elif gender_muscles=="woman" and side_muscles=="forward":
             self.body.source="Images_people/Woman2.png"     #woman2
             self.fl_layout.remove_widget(self.btn_biceps)
             self.fl_layout.remove_widget(self.tailor_muscle)
@@ -231,9 +241,9 @@ class People(Screen):
             self.fl_layout.add_widget(self.Gluteal_muscles)
             self.Gluteal_muscles.pos = (340, 275)
             self.triceps.pos=(250,400)
-            side_="back"
+            side_muscles="back"
 
-        elif gender_ =="man" and side_ =="back":
+        elif gender_muscles =="man" and side_muscles =="back":
             self.body.source="Images_people/Man1.png"   #man1
             self.fl_layout.add_widget(self.btn_biceps)
             self.fl_layout.add_widget(self.tailor_muscle)
@@ -247,9 +257,9 @@ class People(Screen):
             self.tailor_muscle.pos=(310,265)    #tailor
             self.rectus_femoris_muscle.pos=(320, 240)   #rectus
             self.Quadriceps_thigh_muscle.pos = (305, 200)
-            side_="forward"
+            side_muscles="forward"
 
-        elif gender_=="woman" and side_ =="back":
+        elif gender_muscles=="woman" and side_muscles =="back":
             self.body.source="Images_people/Woman1.png"     #woman1
             self.fl_layout.add_widget(self.btn_biceps)
             self.fl_layout.add_widget(self.tailor_muscle)
@@ -263,7 +273,125 @@ class People(Screen):
             self.tailor_muscle.pos=(340,265)  #tailor
             self.rectus_femoris_muscle.pos=(355, 240) #rectus
             self.Quadriceps_thigh_muscle.pos = (340, 200)
-            side_="forward"
+            side_muscles="forward"
+
+class Skin(Screen):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        main_layout = BoxLayout(orientation = "horizontal")
+        layout = BoxLayout(orientation = "vertical", spacing = 5, pos_hint = {"x" : 0.2, "y" : 0.6})
+        
+        self.fl_layout = FloatLayout()
+        self.body = Image(source = "Images_people/skin_man1.png", pos = (100, -10))
+        self.fl_layout.add_widget(self.body)
+        main_layout.add_widget(self.fl_layout)
+        
+        self.fl_layout2 = None
+        
+        self.btn_gender = Button(background_normal = image_gender_btn_blue, background_down = image_gender_btn_blue,size_hint = (None, None), size = (90, 45), pos_hint = {"x" : .75})
+        self.btn_gender.on_press = self.gender
+        layout.add_widget(self.btn_gender)
+        
+        btn_layer = Button(background_normal = "images/skin.png", background_down = "images/skin.png", size_hint = (None, None), size = (80, 80), pos_hint = {"x" : .75})
+        btn_layer.on_press = self.layer
+        layout.add_widget(btn_layer)
+
+        btn_rotate = Button(size_hint = (None, None), size = (70, 70), pos_hint = {"x" : .75}, background_normal = "images/Rotate.png", background_down = "images/Rotate.png")
+        btn_rotate.on_press = self.rotate
+        layout.add_widget(btn_rotate)
+
+        main_layout.add_widget(layout)
+
+        self.add_widget(main_layout)
+
+
+    def layer(self):
+        if not self.fl_layout2:
+            self.fl_layout2 = FloatLayout()
+
+            self.frame = Button(background_normal = "images/frame.png", background_down = "images/frame.png",
+                        size_hint = (None, None), size = (635, 125), pos = (130, 300))
+            self.bone = Button(background_normal = "images/Bone.png", background_down = "images/Bone.png",
+                        size_hint = (None, None), size = (125, 125), pos = (135, 300))
+            self.muscle = Button(background_normal = "images/muscle.png", background_down = "images/muscle.png",
+                        size_hint = (None, None), size = (125, 125), pos = (260, 300))
+            self.nerves = Button(background_normal = "images/nerves.png", background_down = "images/nerves.png",
+                        size_hint = (None, None), size = (125, 125), pos = (385, 300))
+            self.organs = Button(background_normal = "images/organ.png", background_down = "images/organ.png",
+                        size_hint = (None, None), size = (125, 125), pos = (510, 300))
+            self.skin = Button(background_normal = "images/skin.png", background_down = "images/skin.png",
+                        size_hint = (None, None), size = (125, 125), pos = (635, 300))
+
+            self.bone.on_press = self.skeleton
+            self.muscle.on_press = self.muscles
+
+            self.fl_layout2.add_widget(self.frame)
+            self.fl_layout2.add_widget(self.bone)
+            self.fl_layout2.add_widget(self.muscle)
+            self.fl_layout2.add_widget(self.nerves)
+            self.fl_layout2.add_widget(self.organs)
+            self.fl_layout2.add_widget(self.skin)
+            self.add_widget(self.fl_layout2)
+        else:
+            self.remove_widget(self.fl_layout2)
+            self.fl_layout2 = None
+
+    def skeleton(self):
+        self.remove_widget(self.fl_layout2)
+        self.fl_layout2=None
+        self.manager.current = 'Skeleton'
+
+    def muscles(self):
+        self.remove_widget(self.fl_layout2)
+        self.fl_layout2 = None
+        self.manager.current = 'Muscles'
+        
+#########################################################################################################################        
+    def gender(self):
+        global gender_skin
+        global side_skin
+        if gender_skin=="man" and side_skin=="forward":
+            self.body.source="Images_people/skin_woman1.png"   #woman1
+            self.btn_gender.background_normal = image_gender_btn_pink
+            self.btn_gender.background_down = image_gender_btn_pink
+            gender_skin="woman"
+            
+        elif gender_skin=="woman" and side_skin=="forward":
+            self.body.source="Images_people/skin_man1.png"   #man1
+            self.btn_gender.background_normal = image_gender_btn_blue
+            self.btn_gender.background_down = image_gender_btn_blue
+            gender_skin="man"
+            
+        elif gender_skin =="man" and side_skin =="back":
+            self.body.source="Images_people/skin_woman2.png" #woman2
+            self.btn_gender.background_normal = image_gender_btn_pink
+            self.btn_gender.background_down = image_gender_btn_pink
+            gender_skin="woman"
+            
+        elif gender_skin=="woman" and side_skin =="back":
+            self.body.source="Images_people/skin_man2.png"   #man2
+            self.btn_gender.background_normal = image_gender_btn_blue
+            self.btn_gender.background_down = image_gender_btn_blue
+            gender_skin="man"
+#################################################################################################################################################
+    def rotate(self):
+        global gender_skin
+        global side_skin
+        if gender_skin=="man" and side_skin=="forward":
+            self.body.source="Images_people/skin_man2.png"       #man2
+            side_skin="back"
+
+        elif gender_skin=="woman" and side_skin=="forward":
+            self.body.source="Images_people/skin_woman2.png"     #woman2
+            side_skin="back"
+
+        elif gender_skin =="man" and side_skin =="back":
+            self.body.source="Images_people/skin_man1.png"   #man1
+            side_skin="forward"
+
+        elif gender_skin=="woman" and side_skin =="back":
+            self.body.source="Images_people/skin_woman1.png"     #woman1
+            side_skin="forward"
 
 ###########################################################################################################################
 class Skeleton(Screen):
@@ -304,9 +432,10 @@ class Skeleton(Screen):
             self.organs = Button(background_normal = "images/organ.png", background_down = "images/organ.png",
                         size_hint = (None, None), size = (125, 125), pos = (510, 300))
             self.skin = Button(background_normal = "images/skin.png", background_down = "images/skin.png",
-                        size_hint = (None, None), size = (125, 125), pos = (605, 300))
+                        size_hint = (None, None), size = (125, 125), pos = (635, 300))
 
             self.muscle.on_press = self.muscle_layer
+            self.skin.on_press = self.skin_layer
 
             self.fl_layout2.add_widget(self.frame)
             self.fl_layout2.add_widget(self.bone)
@@ -322,7 +451,12 @@ class Skeleton(Screen):
     def muscle_layer(self):
         self.remove_widget(self.fl_layout2)
         self.fl_layout2=None
-        self.manager.current = 'People'
+        self.manager.current = 'Muscles'
+
+    def skin_layer(self):
+        self.remove_widget(self.fl_layout2)
+        self.fl_layout2=None
+        self.manager.current = 'Skin'
 
     def rotate(self):
         global side2
@@ -383,12 +517,13 @@ class Print_info(Screen):
         self.injury.text = Dict_of_muscles[key]['Травми/Хвороби']
 
     def close_info(self, instance):
-        self.manager.current = "People"
+        self.manager.current = "Muscles"
 
 class Screen(App):
     def build(self):
         sm = ScreenManager(transition=NoTransition())
-        sm.add_widget(People(name = 'People'))
+        sm.add_widget(Muscle(name = 'Muscles'))
+        sm.add_widget(Skin(name = 'Skin'))
         sm.add_widget(Skeleton(name='Skeleton'))
         sm.add_widget(Print_info(name='Print_info'))
         
