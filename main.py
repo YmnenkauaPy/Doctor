@@ -72,6 +72,31 @@ class Muscle(Screen):
                           size_hint = (None, None), size = (20, 20), pos = (248, 315))
         self.lumbar.bind(on_press = self.on_press_lumbar)
         
+        self.delta = Button(background_normal = "images/Circle.png", background_down = "images/Circle.png",       #delta
+                          size_hint = (None, None), size = (20, 20), pos = (227, 455))
+        self.delta.bind(on_press = self.on_press_delta)
+        
+        self.forearm = Button(background_normal = "images/Circle.png", background_down = "images/Circle.png",       #Предплечье
+                          size_hint = (None, None), size = (20, 20), pos = (360, 350))
+        self.forearm.bind(on_press = self.on_press_forearm)
+        
+        self.pectoral = Button(background_normal = "images/Circle.png", background_down = "images/Circle.png",       #Грудь
+                          size_hint = (None, None), size = (20, 20), pos = (320, 440))
+        self.pectoral.bind(on_press = self.on_press_pectoral)
+        
+        self.toothed = Button(background_normal = "images/Circle.png", background_down = "images/Circle.png",       #зубчастые
+                          size_hint = (None, None), size = (20, 20), pos = (255, 390))
+        self.toothed.bind(on_press = self.on_press_toothed)
+        
+        self.abdominis = Button(background_normal = "images/Circle.png", background_down = "images/Circle.png",       #Живот(прес)
+                          size_hint = (None, None), size = (20, 20), pos = (295, 370))
+        self.abdominis.bind(on_press = self.on_press_abdominis)
+        
+        self.fl_layout.add_widget(self.abdominis)
+        self.fl_layout.add_widget(self.toothed)
+        self.fl_layout.add_widget(self.pectoral)
+        self.fl_layout.add_widget(self.forearm)
+        self.fl_layout.add_widget(self.delta)
         self.fl_layout.add_widget(self.lumbar)
         self.fl_layout.add_widget(self.btn_biceps)
         self.fl_layout.add_widget(self.tailor_muscle)
@@ -129,7 +154,31 @@ class Muscle(Screen):
         global key
         key="Великий поперековий м'яз"
         self.manager.current = 'Print_info'
+    
+    def on_press_delta(self, instance):
+        global key
+        key="Дельтоподібний м'яз"
+        self.manager.current = 'Print_info'
 
+    def on_press_forearm(self, instance):
+        global key
+        key="Предпліччя"
+        self.manager.current = 'Print_info'
+    
+    def on_press_pectoral(self, instance):
+        global key
+        key="Грудний м'яз"
+        self.manager.current = 'Print_info'
+    
+    def on_press_toothed(self, instance):
+        global key
+        key="Передній зубчастий м'яз"
+        self.manager.current = 'Print_info'
+    
+    def on_press_abdominis(self, instance):
+        global key
+        key="Прямий м'яз живота"
+        self.manager.current = 'Print_info'
 
     def layer(self):
         if not self.fl_layout2:
@@ -185,6 +234,11 @@ class Muscle(Screen):
             self.rectus_femoris_muscle.pos=(355, 240) #rectus
             self.Quadriceps_thigh_muscle.pos = (340, 200)
             self.lumbar.pos=(285,300)
+            self.abdominis.pos = (330, 365)
+            self.forearm.pos = (425, 370)
+            self.delta.pos = (245, 465)
+            self.pectoral.pos = (340, 445)
+            self.toothed.pos = (285, 385)
             gender_muscles="woman"
             
         elif gender_muscles=="woman" and side_muscles=="forward":
@@ -196,6 +250,11 @@ class Muscle(Screen):
             self.rectus_femoris_muscle.pos=(320, 240) #rectus
             self.lumbar.pos = (248,315)
             self.Quadriceps_thigh_muscle.pos = (305, 200)
+            self.delta.pos = (227, 455)
+            self.forearm.pos = (360, 350)
+            self.pectoral.pos = (320, 440)
+            self.toothed.pos = (255, 390)
+            self.abdominis.pos = (295, 370)
             gender_muscles="man"
             
         elif gender_muscles =="man" and side_muscles =="back":
@@ -224,6 +283,11 @@ class Muscle(Screen):
             self.fl_layout.remove_widget(self.rectus_femoris_muscle)
             self.fl_layout.remove_widget(self.Quadriceps_thigh_muscle)
             self.fl_layout.remove_widget(self.lumbar)
+            self.fl_layout.remove_widget(self.pectoral)
+            self.fl_layout.remove_widget(self.abdominis)
+            self.fl_layout.remove_widget(self.delta)
+            self.fl_layout.remove_widget(self.forearm)
+            self.fl_layout.remove_widget(self.toothed)
             self.fl_layout.add_widget(self.triceps)
             self.fl_layout.add_widget(self.Gluteal_muscles)
             self.Gluteal_muscles.pos = (320, 270)
@@ -249,6 +313,11 @@ class Muscle(Screen):
             self.fl_layout.add_widget(self.tailor_muscle)
             self.fl_layout.add_widget(self.rectus_femoris_muscle)
             self.fl_layout.add_widget(self.Quadriceps_thigh_muscle)
+            self.fl_layout.add_widget(self.delta)
+            self.fl_layout.add_widget(self.forearm)
+            self.fl_layout.add_widget(self.abdominis)
+            self.fl_layout.add_widget(self.toothed)
+            self.fl_layout.add_widget(self.pectoral)
             self.fl_layout.add_widget(self.lumbar)
             self.fl_layout.remove_widget(self.Gluteal_muscles)
             self.fl_layout.remove_widget(self.triceps)
@@ -485,11 +554,11 @@ class Print_info(Screen):
 
         self.name_muscle = Label(text = key, pos=(-40,210),font_size='25sp')
         function_text = Label(text = "Функція", pos=(-50,180),font_size='20sp')
-        self.function = Label(text = Dict_of_muscles[key]['Функція'], pos=(-40,125),font_size='20sp')
+        self.function = Label(text = Dict_of_muscles[key]['Функція'], pos=(-40,125),font_size='18sp')
         injury_text = Label(text = "Травми/Хвороби", pos=(-50,60),font_size='20sp')
-        self.injury = Label(text = Dict_of_muscles[key]['Травми/Хвороби'], pos=(-50,10),font_size='20sp')
+        self.injury = Label(text = Dict_of_muscles[key]['Травми/Хвороби'], pos=(-50,10),font_size='18sp')
         exercices_text = Label(text = "Корисні вправи", pos=(-50, -50),font_size='20sp')
-        self.exercices = Label(text = Dict_of_muscles[key]['Корисні вправи'], pos=(-50, -100),font_size='20sp')
+        self.exercices = Label(text = Dict_of_muscles[key]['Корисні вправи'], pos=(-50, -100),font_size='18sp')
 
         Clock.schedule_interval(self.Update, 0.1)
 
