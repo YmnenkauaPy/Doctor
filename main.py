@@ -34,7 +34,7 @@ class Muscle(Screen):
         layout = BoxLayout(orientation = "vertical", spacing = 5, pos_hint = {"x" : 0.2, "y" : 0.6})
         
         self.fl_layout = FloatLayout()
-        self.body = Image(source = "Images_people/Man1.png", pos = (100, -10))
+        self.body = Image(source = "Images/Muscles/Man1.png", pos = (100, -10))
         self.fl_layout.add_widget(self.body)
         main_layout.add_widget(self.fl_layout)
         
@@ -226,7 +226,7 @@ class Muscle(Screen):
         global gender_muscles
         global side_muscles
         if gender_muscles=="man" and side_muscles=="forward":
-            self.body.source="Images_people/Woman1.png"   #woman1
+            self.body.source="Images/Muscles/Woman1.png"   #woman1
             self.btn_gender.background_normal = image_gender_btn_pink
             self.btn_gender.background_down = image_gender_btn_pink
             self.btn_biceps.pos=(370,428)   #biceps
@@ -242,7 +242,7 @@ class Muscle(Screen):
             gender_muscles="woman"
             
         elif gender_muscles=="woman" and side_muscles=="forward":
-            self.body.source="Images_people/Man1.png"   #man1
+            self.body.source="Images/Muscles/Man1.png"   #man1
             self.btn_gender.background_normal = image_gender_btn_blue
             self.btn_gender.background_down = image_gender_btn_blue
             self.btn_biceps.pos=(350,415)   #biceps
@@ -258,7 +258,7 @@ class Muscle(Screen):
             gender_muscles="man"
             
         elif gender_muscles =="man" and side_muscles =="back":
-            self.body.source="Images_people/Woman2.png" #woman2
+            self.body.source="Images/Muscles/Woman2.png" #woman2
             self.btn_gender.background_normal = image_gender_btn_pink
             self.btn_gender.background_down = image_gender_btn_pink
             self.triceps.pos=(250,405)
@@ -266,7 +266,7 @@ class Muscle(Screen):
             gender_muscles="woman"
             
         elif gender_muscles=="woman" and side_muscles =="back":
-            self.body.source="Images_people/Man2.png"   #man2
+            self.body.source="Images/Muscles/Man2.png"   #man2
             self.btn_gender.background_normal = image_gender_btn_blue
             self.btn_gender.background_down = image_gender_btn_blue
             self.triceps.pos=(230,400)
@@ -277,7 +277,7 @@ class Muscle(Screen):
         global gender_muscles
         global side_muscles
         if gender_muscles=="man" and side_muscles=="forward":
-            self.body.source="Images_people/Man2.png"       #man
+            self.body.source="Images/Muscles/Man2.png"       #man
             self.fl_layout.remove_widget(self.btn_biceps)
             self.fl_layout.remove_widget(self.tailor_muscle)
             self.fl_layout.remove_widget(self.rectus_femoris_muscle)
@@ -295,7 +295,7 @@ class Muscle(Screen):
             side_muscles="back"
 
         elif gender_muscles=="woman" and side_muscles=="forward":
-            self.body.source="Images_people/Woman2.png"     #woman2
+            self.body.source="Images/Muscles/Woman2.png"     #woman2
             self.fl_layout.remove_widget(self.btn_biceps)
             self.fl_layout.remove_widget(self.tailor_muscle)
             self.fl_layout.remove_widget(self.rectus_femoris_muscle)
@@ -308,7 +308,7 @@ class Muscle(Screen):
             side_muscles="back"
 
         elif gender_muscles =="man" and side_muscles =="back":
-            self.body.source="Images_people/Man1.png"   #man1
+            self.body.source="Images/Muscles/Man1.png"   #man1
             self.fl_layout.add_widget(self.btn_biceps)
             self.fl_layout.add_widget(self.tailor_muscle)
             self.fl_layout.add_widget(self.rectus_femoris_muscle)
@@ -329,7 +329,7 @@ class Muscle(Screen):
             side_muscles="forward"
 
         elif gender_muscles=="woman" and side_muscles =="back":
-            self.body.source="Images_people/Woman1.png"     #woman1
+            self.body.source="Images/Muscles/Woman1.png"     #woman1
             self.fl_layout.add_widget(self.btn_biceps)
             self.fl_layout.add_widget(self.tailor_muscle)
             self.fl_layout.add_widget(self.rectus_femoris_muscle)
@@ -351,7 +351,7 @@ class Skin(Screen):
         layout = BoxLayout(orientation = "vertical", spacing = 5, pos_hint = {"x" : 0.2, "y" : 0.6})
         
         self.fl_layout = FloatLayout()
-        self.body = Image(source = "Images_people/skin_man1.png", pos = (100, -10))
+        self.body = Image(source = "Images/Skin/skin_man1.png", pos = (100, -10))
         self.fl_layout.add_widget(self.body)
         main_layout.add_widget(self.fl_layout)
         
@@ -420,13 +420,13 @@ class Skin(Screen):
         global gender_skin
         global side_skin
         if gender_skin=="man" and side_skin=="forward":
-            self.body.source="Images_people/skin_woman1.png"   #woman1
+            self.body.source="Images/Skin/skin_woman1.png"   #woman1
             self.btn_gender.background_normal = image_gender_btn_pink
             self.btn_gender.background_down = image_gender_btn_pink
             gender_skin="woman"
             
         elif gender_skin=="woman" and side_skin=="forward":
-            self.body.source="Images_people/skin_man1.png"   #man1
+            self.body.source="Images/Skin/skin_man1.png"   #man1
             self.btn_gender.background_normal = image_gender_btn_blue
             self.btn_gender.background_down = image_gender_btn_blue
             gender_skin="man"
@@ -438,7 +438,7 @@ class Skin(Screen):
             gender_skin="woman"
             
         elif gender_skin=="woman" and side_skin =="back":
-            self.body.source="Images_people/skin_man2.png"   #man2
+            self.body.source="Images/Skin/skin_man2.png"   #man2
             self.btn_gender.background_normal = image_gender_btn_blue
             self.btn_gender.background_down = image_gender_btn_blue
             gender_skin="man"
@@ -447,19 +447,19 @@ class Skin(Screen):
         global gender_skin
         global side_skin
         if gender_skin=="man" and side_skin=="forward":
-            self.body.source="Images_people/skin_man2.png"       #man2
+            self.body.source="Images/Skin/skin_man2.png"       #man2
             side_skin="back"
 
         elif gender_skin=="woman" and side_skin=="forward":
-            self.body.source="Images_people/skin_woman2.png"     #woman2
+            self.body.source="Images/Skin/skin_woman2.png"     #woman2
             side_skin="back"
 
         elif gender_skin =="man" and side_skin =="back":
-            self.body.source="Images_people/skin_man1.png"   #man1
+            self.body.source="Images/Skin/skin_man1.png"   #man1
             side_skin="forward"
 
         elif gender_skin=="woman" and side_skin =="back":
-            self.body.source="Images_people/skin_woman1.png"     #woman1
+            self.body.source="Images/Skin/skin_woman1.png"     #woman1
             side_skin="forward"
 
 ###########################################################################################################################
@@ -469,7 +469,7 @@ class Skeleton(Screen):
         main_layout = BoxLayout(orientation = "horizontal")
         layout = BoxLayout(orientation = "vertical", spacing = 5, pos_hint = {"x" : 0.2, "y" : 0.6})
 
-        self.body = Image(source = "Images_people/Bone1.png", pos = (100, -10))
+        self.body = Image(source = "Images/Skeleton/Bone1.png", pos = (100, -10))
         main_layout.add_widget(self.body)
 
         self.fl_layout2 = None
@@ -530,10 +530,10 @@ class Skeleton(Screen):
     def rotate(self):
         global side2
         if side2 == "forward":
-            self.body.source = "Images_people/Bone2.png"
+            self.body.source = "Images/Skeleton/Bone2.png"
             side2 = "back"
         else:
-            self.body.source = "Images_people/Bone1.png"
+            self.body.source = "Images/Skeleton/Bone1.png"
             side2 = "forward"
 
 class Print_info(Screen):
