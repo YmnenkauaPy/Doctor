@@ -65,7 +65,7 @@ class Muscle(Screen):
                           size_hint = (None, None), size = (20, 20), pos = (320, 270))
         self.Gluteal_muscles.bind(on_press = self.on_gluteal_muscles)
         
-        self.lumbar = Button(background_normal = "images/Circle.png", background_down = "images/Circle.png",       #тріцепс
+        self.lumbar = Button(background_normal = "images/Circle.png", background_down = "images/Circle.png",       ##Великий Поперековий м'яз
                           size_hint = (None, None), size = (20, 20), pos = (248, 315))
         self.lumbar.bind(on_press = self.on_press_lumbar)
         
