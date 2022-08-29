@@ -22,7 +22,6 @@ side_skin = "forward"     #Человек смотрит прямо
 image_gender_btn_blue = "images/Switch_blue.png"
 image_gender_btn_pink = "images/Switch_pink.png"
 
-
 key = "Двоголовий м'яз плеча"
 Window.clearcolor = (0, .8, .9, 1) #установка цвета нового фона
 yellow = (2.2,2.4,0.2,1)
@@ -30,6 +29,7 @@ yellow = (2.2,2.4,0.2,1)
 class Muscle(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        
         main_layout = BoxLayout(orientation = "horizontal")
         layout = BoxLayout(orientation = "vertical", spacing = 5, pos_hint = {"x" : 0.2, "y" : 0.6})
         
@@ -39,22 +39,19 @@ class Muscle(Screen):
         main_layout.add_widget(self.fl_layout)
         
         self.fl_layout2 = None
-        #кнопки с мышцами
 
+        #кнопки с мышцами
         self.btn_biceps = Button(background_normal = "images/Circle.png", background_down = "images/Circle.png",       #Біцепс
                           size_hint = (None, None), size = (20, 20), pos = (350, 415))
         self.btn_biceps.bind(on_press = self.on_press_biceps)
-        
         
         self.tailor_muscle = Button(background_normal = "images/Circle.png", background_down = "images/Circle.png",   #кравецький м'яз
                           size_hint = (None, None), size = (20, 20), pos = (310, 265))
         self.tailor_muscle.bind(on_press = self.on_press_tailor)
         
-        
         self.rectus_femoris_muscle = Button(background_normal = "images/Circle.png", background_down = "images/Circle.png", #Прямий м'яз стегна
                           size_hint = (None, None), size = (20, 20), pos = (320, 240))
         self.rectus_femoris_muscle.bind(on_press = self.on_rectus_femoris)
-        
         
         self.triceps = Button(background_normal = "images/Circle.png", background_down = "images/Circle.png",       #тріцепс
                           size_hint = (None, None), size = (20, 20), pos = (230, 400))
@@ -93,6 +90,7 @@ class Muscle(Screen):
         self.abdominis.bind(on_press = self.on_press_abdominis)
         
         self.fl_layout.add_widget(self.abdominis)
+        self.fl_layout.add_widget(self.triceps)
         self.fl_layout.add_widget(self.toothed)
         self.fl_layout.add_widget(self.pectoral)
         self.fl_layout.add_widget(self.forearm)
@@ -119,6 +117,7 @@ class Muscle(Screen):
         main_layout.add_widget(layout)
 
         self.add_widget(main_layout)
+
 
     def on_press_biceps(self, instance):
         global key
@@ -239,6 +238,7 @@ class Muscle(Screen):
             self.delta.pos = (245, 465)
             self.pectoral.pos = (340, 445)
             self.toothed.pos = (285, 385)
+            self.triceps.pos = (235, 430)
             gender_muscles="woman"
             
         elif gender_muscles=="woman" and side_muscles=="forward":
@@ -255,6 +255,7 @@ class Muscle(Screen):
             self.pectoral.pos = (320, 440)
             self.toothed.pos = (255, 390)
             self.abdominis.pos = (295, 370)
+            self.triceps.pos = (230, 400)
             gender_muscles="man"
             
         elif gender_muscles =="man" and side_muscles =="back":
