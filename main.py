@@ -93,6 +93,14 @@ class Muscle(Screen):
                           size_hint = (None, None), size = (20, 20), pos = (265, 370))
         self.back_muscle.bind(on_press = self.on_press_back_muscle)
 
+        self.trapezius = Button(background_normal = "images/Circle.png", background_down = "images/Circle.png",       #Живот(прес)
+                          size_hint = (None, None), size = (20, 20), pos = (280, 400))
+        self.trapezius.bind(on_press = self.on_press_trapezius)
+
+        self.platysmal = Button(background_normal = "images/Circle.png", background_down = "images/Circle.png",       #Живот(прес)
+                          size_hint = (None, None), size = (25, 25), pos = (290, 485))
+        self.platysmal.bind(on_press = self.on_press_platysmal)
+
         self.fl_layout.add_widget(self.abdominis)
         self.fl_layout.add_widget(self.toothed)
         self.fl_layout.add_widget(self.pectoral)
@@ -103,7 +111,7 @@ class Muscle(Screen):
         self.fl_layout.add_widget(self.tailor_muscle)
         self.fl_layout.add_widget(self.rectus_femoris_muscle)
         self.fl_layout.add_widget(self.Quadriceps_thigh_muscle)
-        
+        self.fl_layout.add_widget(self.platysmal)
         
         self.btn_gender = Button(background_normal = image_gender_btn_blue, background_down = image_gender_btn_blue,size_hint = (None, None), size = (90, 45), pos_hint = {"x" : .75})
         self.btn_gender.on_press = self.gender
@@ -120,7 +128,6 @@ class Muscle(Screen):
         main_layout.add_widget(layout)
 
         self.add_widget(main_layout)
-
 
     def on_press_biceps(self, instance):
         global key
@@ -187,6 +194,16 @@ class Muscle(Screen):
         key="Найширший м'яз спини"
         self.manager.current = 'Print_info'
 
+    def on_press_trapezius(self, instance):
+        global key
+        key="Трапецієподібний м'яз"
+        self.manager.current = 'Print_info'
+
+    def on_press_platysmal(self, instance):
+        global key
+        key="Платизмальний м'яз"
+        self.manager.current = 'Print_info'
+
     def layer(self):
         if not self.fl_layout2:
             self.fl_layout2 = FloatLayout()
@@ -247,6 +264,7 @@ class Muscle(Screen):
             self.pectoral.pos = (340, 445)
             self.toothed.pos = (285, 385)
             self.triceps.pos = (235, 430)
+            self.platysmal.pos = (310, 495)
             gender_muscles="woman"
             
         elif gender_muscles=="woman" and side_muscles=="forward":
@@ -264,6 +282,7 @@ class Muscle(Screen):
             self.toothed.pos = (255, 390)
             self.abdominis.pos = (295, 370)
             self.triceps.pos = (230, 400)
+            self.platysmal.pos = (290, 485)
             gender_muscles="man"
             
         elif gender_muscles =="man" and side_muscles =="back":
@@ -273,6 +292,7 @@ class Muscle(Screen):
             self.triceps.pos=(250,405)
             self.Gluteal_muscles.pos = (340, 275)
             self.back_muscle.pos = (292, 375)
+            self.trapezius.pos = (315, 420)
             gender_muscles="woman"
             
         elif gender_muscles=="woman" and side_muscles =="back":
@@ -282,6 +302,7 @@ class Muscle(Screen):
             self.triceps.pos=(230,400)
             self.Gluteal_muscles.pos = (320, 270)
             self.back_muscle.pos = (265, 370)
+            self.trapezius.pos = (280, 400)
             gender_muscles="man"
 #################################################################################################################################################
     def rotate(self):
@@ -299,12 +320,15 @@ class Muscle(Screen):
             self.fl_layout.remove_widget(self.delta)
             self.fl_layout.remove_widget(self.forearm)
             self.fl_layout.remove_widget(self.toothed)
+            self.fl_layout.remove_widget(self.platysmal)
             self.fl_layout.add_widget(self.triceps)
             self.fl_layout.add_widget(self.Gluteal_muscles)
             self.fl_layout.add_widget(self.back_muscle)
+            self.fl_layout.add_widget(self.trapezius)
             self.Gluteal_muscles.pos = (320, 270)
             self.triceps.pos=(230, 400)
             self.back_muscle.pos = (265, 370)
+            self.trapezius.pos = (280, 400)
             side_muscles="back"
 
         elif gender_muscles=="woman" and side_muscles=="forward":
@@ -319,12 +343,15 @@ class Muscle(Screen):
             self.fl_layout.remove_widget(self.delta)
             self.fl_layout.remove_widget(self.forearm)
             self.fl_layout.remove_widget(self.toothed)
+            self.fl_layout.remove_widget(self.platysmal)
             self.fl_layout.add_widget(self.triceps)
             self.fl_layout.add_widget(self.Gluteal_muscles)
             self.fl_layout.add_widget(self.back_muscle)
+            self.fl_layout.add_widget(self.trapezius)
             self.Gluteal_muscles.pos = (340, 275)
             self.triceps.pos=(250,400)
             self.back_muscle.pos = (292, 375)
+            self.trapezius.pos = (315, 420)
             side_muscles="back"
 
         elif gender_muscles =="man" and side_muscles =="back":
@@ -339,9 +366,11 @@ class Muscle(Screen):
             self.fl_layout.add_widget(self.toothed)
             self.fl_layout.add_widget(self.pectoral)
             self.fl_layout.add_widget(self.lumbar)
+            self.fl_layout.add_widget(self.platysmal)
             self.fl_layout.remove_widget(self.Gluteal_muscles)
             self.fl_layout.remove_widget(self.triceps)
             self.fl_layout.remove_widget(self.back_muscle)
+            self.fl_layout.remove_widget(self.trapezius)
             self.btn_biceps.pos=(350,415)   #biceps
             self.tailor_muscle.pos=(310,265)    #tailor
             self.rectus_femoris_muscle.pos=(320, 240) #rectus
@@ -353,6 +382,7 @@ class Muscle(Screen):
             self.toothed.pos = (255, 390)
             self.abdominis.pos = (295, 370)
             self.triceps.pos = (230, 400)
+            self.platysmal.pos = (290, 485)
             side_muscles="forward"
 
         elif gender_muscles=="woman" and side_muscles =="back":
@@ -367,9 +397,11 @@ class Muscle(Screen):
             self.fl_layout.add_widget(self.toothed)
             self.fl_layout.add_widget(self.pectoral)
             self.fl_layout.add_widget(self.lumbar)
+            self.fl_layout.add_widget(self.platysmal)
             self.fl_layout.remove_widget(self.Gluteal_muscles)
             self.fl_layout.remove_widget(self.triceps)
             self.fl_layout.remove_widget(self.back_muscle)
+            self.fl_layout.remove_widget(self.trapezius)
             self.btn_biceps.pos=(370,428)   #biceps
             self.tailor_muscle.pos=(340,265) #tailor
             self.rectus_femoris_muscle.pos=(355, 240) #rectus
@@ -381,6 +413,7 @@ class Muscle(Screen):
             self.pectoral.pos = (340, 445)
             self.toothed.pos = (285, 385)
             self.triceps.pos = (235, 430)
+            self.platysmal.pos = (310, 495)
             side_muscles="forward"
 
 class Skin(Screen):
@@ -411,7 +444,6 @@ class Skin(Screen):
         main_layout.add_widget(layout)
 
         self.add_widget(main_layout)
-
 
     def layer(self):
         if not self.fl_layout2:
