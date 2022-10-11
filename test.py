@@ -38,8 +38,8 @@ class Muscle(Screen):
         layout = BoxLayout(orientation = "vertical", spacing = 5, pos_hint = {"x" : 0.2, "y" : 0.6})
         
         self.fl_layout = FloatLayout()
-        self.body = Image(source = "Images/Muscles/Man1.png", pos = (100/800*x, -10/600*y), size = (100*x/800, 100*y/600))
-        #print(self.body.size)
+        self.body = Image(source = "Images/Muscles/Man1.png", pos = (100/800*x, -10/600*y))
+
         self.fl_layout.add_widget(self.body)
         main_layout.add_widget(self.fl_layout)
         
