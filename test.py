@@ -27,7 +27,6 @@ Window.clearcolor = (0, .8, .9, 1) #установка цвета нового �
 yellow = (2.2,2.4,0.2,1)
 
 x, y = Window.size = (600, 700)
-
 class Muscle(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -514,7 +513,7 @@ class Skin(Screen):
             gender_skin="man"
             
         elif gender_skin =="man" and side_skin =="back":
-            self.body.source="Images_people/skin_woman2.png" #woman2
+            self.body.source="Images/Skin/skin_woman2.png" #woman2
             self.btn_gender.background_normal = image_gender_btn_pink
             self.btn_gender.background_down = image_gender_btn_pink
             gender_skin="woman"
