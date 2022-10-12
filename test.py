@@ -26,7 +26,7 @@ key = "Двоголовий м'яз плеча"
 Window.clearcolor = (0, .8, .9, 1) #установка цвета нового фона
 yellow = (2.2,2.4,0.2,1)
 
-x, y = Window.size = (700, 600)
+x, y = Window.size = (500, 600)
 
 class Muscle(Screen):
     def __init__(self, **kwargs):
@@ -39,7 +39,7 @@ class Muscle(Screen):
         layout = BoxLayout(orientation = "vertical", spacing = 5, pos_hint = {"x" : 0.2, "y" : 0.6})
         
         self.fl_layout = FloatLayout()
-        self.body = Image(source = "Images/Muscles/Man1.png", pos = (100/800*x, -10/600*y))
+        self.body = Image(source = "Images/Muscles/Man1.png", pos_hint = {'center_x' : .75, "center_y" : .49}, size_hint = (None, None), size = (500/800*x, 600/600*y))
 
         self.fl_layout.add_widget(self.body)
         main_layout.add_widget(self.fl_layout)
@@ -433,7 +433,7 @@ class Skin(Screen):
         layout = BoxLayout(orientation = "vertical", spacing = 5, pos_hint = {"x" : 0.2, "y" : 0.6})
         
         self.fl_layout = FloatLayout()
-        self.body = Image(source = "Images/Skin/skin_man1.png", pos = (100/800*x, -10/600*y))
+        self.body = Image(source = "Images/Skin/skin_man1.png", pos_hint = {'center_x' : .75, "center_y" : .49}, size_hint = (None, None), size = (500/800*x, 600/600*y))
         self.fl_layout.add_widget(self.body)
         main_layout.add_widget(self.fl_layout)
         
@@ -554,7 +554,7 @@ class Skeleton(Screen):
         main_layout = BoxLayout(orientation = "horizontal")
         layout = BoxLayout(orientation = "vertical", spacing = 5, pos_hint = {"x" : 0.2, "y" : 0.6})
 
-        self.body = Image(source = "Images/Skeleton/Bone1.png", pos = (100/800*x, -10/600*y))
+        self.body = Image(source = "Images/Skeleton/Bone1.png", pos_hint = {'center_x' : .75, "center_y" : .49}, size_hint = (None, None), size = (500/800*x, 600/600*y))
         main_layout.add_widget(self.body)
 
         self.fl_layout2 = None
