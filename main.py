@@ -26,14 +26,11 @@ key = "Двоголовий м'яз плеча"
 Window.clearcolor = (0, .8, .9, 1) #установка цвета нового фона
 yellow = (2.2,2.4,0.2,1)
 
-x, y = Window.size = (800, 600)
+Window.size = (800, 600)
 
 class Muscle(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        global x, y
-
-        x, y = Window.size
 
         main_layout = BoxLayout(orientation = "horizontal")
         layout = BoxLayout(orientation = "vertical", spacing = 5, pos_hint = {"x" : 0.2, "y" : 0.6})
@@ -211,7 +208,6 @@ class Muscle(Screen):
         self.manager.current = 'Print_info'
 
     def layer(self):
-        global x, y
         if not self.fl_layout2:
             self.fl_layout2 = FloatLayout()
             self.frame = Button(background_normal = "images/frame.png", background_down = "images/frame.png",
@@ -493,7 +489,6 @@ class Skin(Screen):
     def gender(self):
         global gender_skin
         global side_skin
-        global x, y
         if gender_skin=="man" and side_skin=="forward":
             self.body.source="Images/Skin/skin_woman1.png"   #woman1
             self.btn_gender.background_normal = image_gender_btn_pink
@@ -521,7 +516,6 @@ class Skin(Screen):
     def rotate(self):
         global gender_skin
         global side_skin
-        global x, y
         if gender_skin=="man" and side_skin=="forward":
             self.body.source="Images/Skin/skin_man2.png"       #man2
             side_skin="back"
@@ -542,8 +536,7 @@ class Skin(Screen):
 class Skeleton(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        global x, y
-        
+
         main_layout = BoxLayout(orientation = "horizontal")
         layout = BoxLayout(orientation = "vertical", spacing = 5, pos_hint = {"x" : 0.2, "y" : 0.6})
 
@@ -565,7 +558,6 @@ class Skeleton(Screen):
         self.add_widget(main_layout)
 
     def layer(self):
-        global x, y
         if not self.fl_layout2:
             self.fl_layout2 = FloatLayout()
             self.frame = Button(background_normal = "images/frame.png", background_down = "images/frame.png",
@@ -607,7 +599,6 @@ class Skeleton(Screen):
 
     def rotate(self):
         global side2
-        global x, y
         if side2 == "forward":
             self.body.source = "Images/Skeleton/Bone2.png"
             side2 = "back"
@@ -618,7 +609,6 @@ class Skeleton(Screen):
 class Print_info(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        global x, y
 
         global key
         float_layout = FloatLayout()
