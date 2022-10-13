@@ -26,15 +26,21 @@ key = "Двоголовий м'яз плеча"
 Window.clearcolor = (0, .8, .9, 1) #установка цвета нового фона
 yellow = (2.2,2.4,0.2,1)
 
+x, y = Window.size = (800, 600)
+
 class Muscle(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        
+        global x, y
+
+        x, y = Window.size
+
         main_layout = BoxLayout(orientation = "horizontal")
         layout = BoxLayout(orientation = "vertical", spacing = 5, pos_hint = {"x" : 0.2, "y" : 0.6})
         
         self.fl_layout = FloatLayout()
-        self.body = Image(source = "Images/Muscles/Man1.png", pos = (100, -10))
+        self.body = Image(source = "Images/Muscles/Man1.png", pos_hint = {'center_x' : .75, "center_y" : .49}, size_hint = (None, None), size = (500, 600))
+
         self.fl_layout.add_widget(self.body)
         main_layout.add_widget(self.fl_layout)
         
@@ -42,63 +48,63 @@ class Muscle(Screen):
 
         #кнопки с мышцами
         self.btn_biceps = Button(background_normal = "images/Circle.png", background_down = "images/Circle.png",       #Біцепс
-                          size_hint = (None, None), size = (20, 20), pos = (350, 415))
+                          size_hint = (None, None), size = (20, 20), pos_hint = {'center_x' : .9, "center_y" : .71})
         self.btn_biceps.bind(on_press = self.on_press_biceps)
         
         self.tailor_muscle = Button(background_normal = "images/Circle.png", background_down = "images/Circle.png",   #кравецький м'яз
-                          size_hint = (None, None), size = (20, 20), pos = (310, 265))
+                          size_hint = (None, None), size = (20, 20), pos_hint = {'center_x' : .8, "center_y" : .46})
         self.tailor_muscle.bind(on_press = self.on_press_tailor)
         
         self.rectus_femoris_muscle = Button(background_normal = "images/Circle.png", background_down = "images/Circle.png", #Прямий м'яз стегна
-                          size_hint = (None, None), size = (20, 20), pos = (320, 240))
+                          size_hint = (None, None), size = (20, 20), pos_hint = {'center_x' : .83, "center_y" : .42})
         self.rectus_femoris_muscle.bind(on_press = self.on_rectus_femoris)
         
         self.triceps = Button(background_normal = "images/Circle.png", background_down = "images/Circle.png",       #тріцепс
-                          size_hint = (None, None), size = (20, 20), pos = (230, 400))
+                          size_hint = (None, None), size = (20, 20), pos_hint = {'center_x' : .6, "center_y" : .7})
         self.triceps.bind(on_press = self.on_press_triceps)
 
         self.Quadriceps_thigh_muscle = Button(background_normal = "images/Circle.png", background_down = "images/Circle.png",       #квадріцепс
-                          size_hint = (None, None), size = (20, 20), pos = (305, 210))
+                          size_hint = (None, None), size = (20, 20), pos_hint = {'center_x' : .79, "center_y" : .37})
         self.Quadriceps_thigh_muscle.bind(on_press = self.on_quadriceps_thigh_muscle)
 
         self.Gluteal_muscles = Button(background_normal = "images/Circle.png", background_down = "images/Circle.png",       #попа
-                          size_hint = (None, None), size = (20, 20), pos = (320, 270))
+                          size_hint = (None, None), size = (20, 20), pos_hint = {'center_x' : .83, "center_y" : .48})
         self.Gluteal_muscles.bind(on_press = self.on_gluteal_muscles)
         
         self.lumbar = Button(background_normal = "images/Circle.png", background_down = "images/Circle.png",       ##Великий Поперековий м'яз
-                          size_hint = (None, None), size = (20, 20), pos = (248, 315))
+                          size_hint = (None, None), size = (20, 20), pos_hint = {'center_x' : .64, "center_y" : .54})
         self.lumbar.bind(on_press = self.on_press_lumbar)
         
         self.delta = Button(background_normal = "images/Circle.png", background_down = "images/Circle.png",       #delta
-                          size_hint = (None, None), size = (20, 20), pos = (227, 455))
+                          size_hint = (None, None), size = (20, 20), pos_hint = {'center_x' : .59, "center_y" : .78})
         self.delta.bind(on_press = self.on_press_delta)
         
         self.forearm = Button(background_normal = "images/Circle.png", background_down = "images/Circle.png",       #Предплечье
-                          size_hint = (None, None), size = (20, 20), pos = (360, 350))
+                          size_hint = (None, None), size = (20, 20), pos_hint = {'center_x' : .93, "center_y" : .6})
         self.forearm.bind(on_press = self.on_press_forearm)
         
         self.pectoral = Button(background_normal = "images/Circle.png", background_down = "images/Circle.png",       #Грудь
-                          size_hint = (None, None), size = (20, 20), pos = (320, 440))
+                          size_hint = (None, None), size = (20, 20), pos_hint = {'center_x' : .83, "center_y" : .76})
         self.pectoral.bind(on_press = self.on_press_pectoral)
         
         self.toothed = Button(background_normal = "images/Circle.png", background_down = "images/Circle.png",       #зубчастые
-                          size_hint = (None, None), size = (20, 20), pos = (255, 390))
+                          size_hint = (None, None), size = (20, 20), pos_hint = {'center_x' : .67, "center_y" : .67})
         self.toothed.bind(on_press = self.on_press_toothed)
         
         self.abdominis = Button(background_normal = "images/Circle.png", background_down = "images/Circle.png",       #Живот(прес)
-                          size_hint = (None, None), size = (20, 20), pos = (295, 370))
+                          size_hint = (None, None), size = (20, 20), pos_hint = {'center_x' : .76, "center_y" : .63})
         self.abdominis.bind(on_press = self.on_press_abdominis)
 
-        self.back_muscle = Button(background_normal = "images/Circle.png", background_down = "images/Circle.png",       #Живот(прес)
-                          size_hint = (None, None), size = (20, 20), pos = (265, 370))
+        self.back_muscle = Button(background_normal = "images/Circle.png", background_down = "images/Circle.png",       
+                          size_hint = (None, None), size = (20, 20), pos_hint = {'center_x' : .68, "center_y" : .64})
         self.back_muscle.bind(on_press = self.on_press_back_muscle)
 
-        self.trapezius = Button(background_normal = "images/Circle.png", background_down = "images/Circle.png",       #Живот(прес)
-                          size_hint = (None, None), size = (20, 20), pos = (280, 400))
+        self.trapezius = Button(background_normal = "images/Circle.png", background_down = "images/Circle.png",       
+                          size_hint = (None, None), size = (20, 20), pos_hint = {'center_x' : .73, "center_y" : .69})
         self.trapezius.bind(on_press = self.on_press_trapezius)
 
-        self.platysmal = Button(background_normal = "images/Circle.png", background_down = "images/Circle.png",       #Живот(прес)
-                          size_hint = (None, None), size = (25, 25), pos = (290, 485))
+        self.platysmal = Button(background_normal = "images/Circle.png", background_down = "images/Circle.png",       
+                          size_hint = (None, None), size = (25, 25), pos_hint = {'center_x' : .76, "center_y" : .83})
         self.platysmal.bind(on_press = self.on_press_platysmal)
 
         self.fl_layout.add_widget(self.abdominis)
@@ -205,21 +211,21 @@ class Muscle(Screen):
         self.manager.current = 'Print_info'
 
     def layer(self):
+        global x, y
         if not self.fl_layout2:
             self.fl_layout2 = FloatLayout()
-
             self.frame = Button(background_normal = "images/frame.png", background_down = "images/frame.png",
-                        size_hint = (None, None), size = (635, 125), pos = (130, 300))
+                        size_hint = (None, None), size = (635, 125), pos_hint = {'center_x' : .52, 'center_y' : .6})
             self.bone = Button(background_normal = "images/Bone.png", background_down = "images/Bone.png",
-                        size_hint = (None, None), size = (125, 125), pos = (135, 300))
+                        size_hint = (None, None), size = (125, 125), pos_hint = {'center_x' : .21, 'center_y' : .6})
             self.muscle = Button(background_normal = "images/muscle.png", background_down = "images/muscle.png",
-                        size_hint = (None, None), size = (125, 125), pos = (260, 300))
+                        size_hint = (None, None), size = (125, 125), pos_hint = {'center_x' : .36, 'center_y' : .6})
             self.nerves = Button(background_normal = "images/nerves.png", background_down = "images/nerves.png",
-                        size_hint = (None, None), size = (125, 125), pos = (385, 300))
+                        size_hint = (None, None), size = (125, 125), pos_hint = {'center_x' : .52, 'center_y' : .6})
             self.organs = Button(background_normal = "images/organ.png", background_down = "images/organ.png",
-                        size_hint = (None, None), size = (125, 125), pos = (510, 300))
+                        size_hint = (None, None), size = (125, 125), pos_hint = {'center_x' : .67, 'center_y' : .6})
             self.skin = Button(background_normal = "images/skin.png", background_down = "images/skin.png",
-                        size_hint = (None, None), size = (125, 125), pos = (635, 300))
+                        size_hint = (None, None), size = (125, 125), pos_hint = {'center_x' : .83, 'center_y' : .6})
 
             self.bone.on_press = self.skeleton
             self.skin.on_press = self.skin_layer
@@ -253,56 +259,54 @@ class Muscle(Screen):
             self.body.source="Images/Muscles/Woman1.png"   #woman1
             self.btn_gender.background_normal = image_gender_btn_pink
             self.btn_gender.background_down = image_gender_btn_pink
-            self.btn_biceps.pos=(370,428)   #biceps
-            self.tailor_muscle.pos=(340,265) #tailor
-            self.rectus_femoris_muscle.pos=(355, 240) #rectus
-            self.Quadriceps_thigh_muscle.pos = (340, 200)
-            self.lumbar.pos=(285,300)
-            self.abdominis.pos = (330, 365)
-            self.forearm.pos = (425, 370)
-            self.delta.pos = (245, 465)
-            self.pectoral.pos = (340, 445)
-            self.toothed.pos = (285, 385)
-            self.triceps.pos = (235, 430)
-            self.platysmal.pos = (310, 495)
+            self.btn_biceps.pos_hint = {'center_x' : .95, "center_y" : .74}   #biceps
+            self.tailor_muscle.pos_hint = {'center_x' : .87, "center_y" : .46} #tailor
+            self.rectus_femoris_muscle.pos_hint = {'center_x' : .9, "center_y" : .42} #rectus
+            self.Quadriceps_thigh_muscle.pos_hint = {'center_x' : .87, "center_y" : .35}
+            self.lumbar.pos_hint = {'center_x' : .74, "center_y" : .52}
+            self.abdominis.pos_hint = {'center_x' : .85, "center_y" : .63}
+            self.forearm.pos_hint = {'center_x' : 1.1, "center_y" : .63}
+            self.delta.pos_hint = {'center_x' : .64, "center_y" : .79}
+            self.pectoral.pos_hint = {'center_x' : .88, "center_y" : .76}
+            self.toothed.pos_hint = {'center_x' : .74, "center_y" : .67}
+            self.platysmal.pos_hint = {'center_x' : .81, "center_y" : .85}
             gender_muscles="woman"
             
         elif gender_muscles=="woman" and side_muscles=="forward":
             self.body.source="Images/Muscles/Man1.png"   #man1
             self.btn_gender.background_normal = image_gender_btn_blue
             self.btn_gender.background_down = image_gender_btn_blue
-            self.btn_biceps.pos=(350,415)   #biceps
-            self.tailor_muscle.pos=(310,265)    #tailor
-            self.rectus_femoris_muscle.pos=(320, 240) #rectus
-            self.lumbar.pos = (248,315)
-            self.Quadriceps_thigh_muscle.pos = (305, 200)
-            self.delta.pos = (227, 455)
-            self.forearm.pos = (360, 350)
-            self.pectoral.pos = (320, 440)
-            self.toothed.pos = (255, 390)
-            self.abdominis.pos = (295, 370)
-            self.triceps.pos = (230, 400)
-            self.platysmal.pos = (290, 485)
-            gender_muscles="man"
+            self.btn_biceps.pos_hint = {'center_x' : .9, "center_y" : .71}   #biceps
+            self.tailor_muscle.pos_hint = {'center_x' : .8, "center_y" : .46} #tailor
+            self.rectus_femoris_muscle.pos_hint = {'center_x' : .83, "center_y" : .42} #rectus
+            self.Quadriceps_thigh_muscle.pos_hint = {'center_x' : .79, "center_y" : .37}
+            self.lumbar.pos_hint = {'center_x' : .64, "center_y" : .54}
+            self.abdominis.pos_hint = {'center_x' : .76, "center_y" : .63}
+            self.forearm.pos_hint = {'center_x' : .93, "center_y" : .6}
+            self.delta.pos_hint = {'center_x' : .59, "center_y" : .78}
+            self.pectoral.pos_hint = {'center_x' : .83, "center_y" : .76}
+            self.toothed.pos_hint = {'center_x' : .67, "center_y" : .67}
+            self.platysmal.pos_hint = {'center_x' : .76, "center_y" : .83}
+            gender_muscles = "man"
             
-        elif gender_muscles =="man" and side_muscles =="back":
+        elif gender_muscles == "man" and side_muscles == "back":
             self.body.source="Images/Muscles/Woman2.png" #woman2
             self.btn_gender.background_normal = image_gender_btn_pink
             self.btn_gender.background_down = image_gender_btn_pink
-            self.triceps.pos=(250,405)
-            self.Gluteal_muscles.pos = (340, 275)
-            self.back_muscle.pos = (292, 375)
-            self.trapezius.pos = (315, 420)
+            self.triceps.pos_hint = {'center_x' : .66, "center_y" : .69}
+            self.Gluteal_muscles.pos_hint = {'center_x' : .88, "center_y" : .48}
+            self.back_muscle.pos_hint = {'center_x' : .76, "center_y" : .65}
+            self.trapezius.pos_hint = {'center_x' : .81, "center_y" : .72}
             gender_muscles="woman"
             
         elif gender_muscles=="woman" and side_muscles =="back":
             self.body.source="Images/Muscles/Man2.png"   #man2
             self.btn_gender.background_normal = image_gender_btn_blue
             self.btn_gender.background_down = image_gender_btn_blue
-            self.triceps.pos=(230,400)
-            self.Gluteal_muscles.pos = (320, 270)
-            self.back_muscle.pos = (265, 370)
-            self.trapezius.pos = (280, 400)
+            self.triceps.pos_hint = {'center_x' : .6, "center_y" : .7}
+            self.Gluteal_muscles.pos_hint = {'center_x' : .83, "center_y" : .48}
+            self.back_muscle.pos_hint = {'center_x' : .68, "center_y" : .64}
+            self.trapezius.pos_hint = {'center_x' : .73, "center_y" : .69}
             gender_muscles="man"
 #################################################################################################################################################
     def rotate(self):
@@ -325,10 +329,10 @@ class Muscle(Screen):
             self.fl_layout.add_widget(self.Gluteal_muscles)
             self.fl_layout.add_widget(self.back_muscle)
             self.fl_layout.add_widget(self.trapezius)
-            self.Gluteal_muscles.pos = (320, 270)
-            self.triceps.pos=(230, 400)
-            self.back_muscle.pos = (265, 370)
-            self.trapezius.pos = (280, 400)
+            self.triceps.pos_hint = {'center_x' : .6, "center_y" : .7}
+            self.Gluteal_muscles.pos_hint = {'center_x' : .83, "center_y" : .48}
+            self.back_muscle.pos_hint = {'center_x' : .68, "center_y" : .64}
+            self.trapezius.pos_hint = {'center_x' : .73, "center_y" : .69}
             side_muscles="back"
 
         elif gender_muscles=="woman" and side_muscles=="forward":
@@ -348,10 +352,10 @@ class Muscle(Screen):
             self.fl_layout.add_widget(self.Gluteal_muscles)
             self.fl_layout.add_widget(self.back_muscle)
             self.fl_layout.add_widget(self.trapezius)
-            self.Gluteal_muscles.pos = (340, 275)
-            self.triceps.pos=(250,400)
-            self.back_muscle.pos = (292, 375)
-            self.trapezius.pos = (315, 420)
+            self.triceps.pos_hint = {'center_x' : .66, "center_y" : .69}
+            self.Gluteal_muscles.pos_hint = {'center_x' : .88, "center_y" : .48}
+            self.back_muscle.pos_hint = {'center_x' : .76, "center_y" : .65}
+            self.trapezius.pos_hint = {'center_x' : .81, "center_y" : .72}
             side_muscles="back"
 
         elif gender_muscles =="man" and side_muscles =="back":
@@ -371,18 +375,17 @@ class Muscle(Screen):
             self.fl_layout.remove_widget(self.triceps)
             self.fl_layout.remove_widget(self.back_muscle)
             self.fl_layout.remove_widget(self.trapezius)
-            self.btn_biceps.pos=(350,415)   #biceps
-            self.tailor_muscle.pos=(310,265)    #tailor
-            self.rectus_femoris_muscle.pos=(320, 240) #rectus
-            self.lumbar.pos = (248,315)
-            self.Quadriceps_thigh_muscle.pos = (305, 200)
-            self.delta.pos = (227, 455)
-            self.forearm.pos = (360, 350)
-            self.pectoral.pos = (320, 440)
-            self.toothed.pos = (255, 390)
-            self.abdominis.pos = (295, 370)
-            self.triceps.pos = (230, 400)
-            self.platysmal.pos = (290, 485)
+            self.btn_biceps.pos_hint = {'center_x' : .9, "center_y" : .71}   #biceps
+            self.tailor_muscle.pos_hint = {'center_x' : .8, "center_y" : .46} #tailor
+            self.rectus_femoris_muscle.pos_hint = {'center_x' : .83, "center_y" : .42} #rectus
+            self.Quadriceps_thigh_muscle.pos_hint = {'center_x' : .79, "center_y" : .37}
+            self.lumbar.pos_hint = {'center_x' : .64, "center_y" : .54}
+            self.abdominis.pos_hint = {'center_x' : .76, "center_y" : .63}
+            self.forearm.pos_hint = {'center_x' : .93, "center_y" : .6}
+            self.delta.pos_hint = {'center_x' : .59, "center_y" : .78}
+            self.pectoral.pos_hint = {'center_x' : .83, "center_y" : .76}
+            self.toothed.pos_hint = {'center_x' : .67, "center_y" : .67}
+            self.platysmal.pos_hint = {'center_x' : .76, "center_y" : .83}
             side_muscles="forward"
 
         elif gender_muscles=="woman" and side_muscles =="back":
@@ -402,28 +405,28 @@ class Muscle(Screen):
             self.fl_layout.remove_widget(self.triceps)
             self.fl_layout.remove_widget(self.back_muscle)
             self.fl_layout.remove_widget(self.trapezius)
-            self.btn_biceps.pos=(370,428)   #biceps
-            self.tailor_muscle.pos=(340,265) #tailor
-            self.rectus_femoris_muscle.pos=(355, 240) #rectus
-            self.Quadriceps_thigh_muscle.pos = (340, 200)
-            self.lumbar.pos=(285,300)
-            self.abdominis.pos = (330, 365)
-            self.forearm.pos = (425, 370)
-            self.delta.pos = (245, 465)
-            self.pectoral.pos = (340, 445)
-            self.toothed.pos = (285, 385)
-            self.triceps.pos = (235, 430)
-            self.platysmal.pos = (310, 495)
+            self.btn_biceps.pos_hint = {'center_x' : .95, "center_y" : .74}   #biceps
+            self.tailor_muscle.pos_hint = {'center_x' : .87, "center_y" : .46} #tailor
+            self.rectus_femoris_muscle.pos_hint = {'center_x' : .9, "center_y" : .42} #rectus
+            self.Quadriceps_thigh_muscle.pos_hint = {'center_x' : .87, "center_y" : .35}
+            self.lumbar.pos_hint = {'center_x' : .74, "center_y" : .52}
+            self.abdominis.pos_hint = {'center_x' : .85, "center_y" : .63}
+            self.forearm.pos_hint = {'center_x' : 1.1, "center_y" : .63}
+            self.delta.pos_hint = {'center_x' : .64, "center_y" : .79}
+            self.pectoral.pos_hint = {'center_x' : .88, "center_y" : .76}
+            self.toothed.pos_hint = {'center_x' : .74, "center_y" : .67}
+            self.platysmal.pos_hint = {'center_x' : .81, "center_y" : .85}
             side_muscles="forward"
 
 class Skin(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+
         main_layout = BoxLayout(orientation = "horizontal")
         layout = BoxLayout(orientation = "vertical", spacing = 5, pos_hint = {"x" : 0.2, "y" : 0.6})
         
         self.fl_layout = FloatLayout()
-        self.body = Image(source = "Images/Skin/skin_man1.png", pos = (100, -10))
+        self.body = Image(source = "Images/Skin/skin_man1.png", pos_hint = {'center_x' : .75, "center_y" : .49}, size_hint = (None, None), size = (500/800*x, 600/600*y))
         self.fl_layout.add_widget(self.body)
         main_layout.add_widget(self.fl_layout)
         
@@ -446,21 +449,21 @@ class Skin(Screen):
         self.add_widget(main_layout)
 
     def layer(self):
+        global x, y
         if not self.fl_layout2:
             self.fl_layout2 = FloatLayout()
-
             self.frame = Button(background_normal = "images/frame.png", background_down = "images/frame.png",
-                        size_hint = (None, None), size = (635, 125), pos = (130, 300))
+                        size_hint = (None, None), size = (635, 125), pos_hint = {'center_x' : .52, 'center_y' : .6})
             self.bone = Button(background_normal = "images/Bone.png", background_down = "images/Bone.png",
-                        size_hint = (None, None), size = (125, 125), pos = (135, 300))
+                        size_hint = (None, None), size = (125, 125), pos_hint = {'center_x' : .21, 'center_y' : .6})
             self.muscle = Button(background_normal = "images/muscle.png", background_down = "images/muscle.png",
-                        size_hint = (None, None), size = (125, 125), pos = (260, 300))
+                        size_hint = (None, None), size = (125, 125), pos_hint = {'center_x' : .36, 'center_y' : .6})
             self.nerves = Button(background_normal = "images/nerves.png", background_down = "images/nerves.png",
-                        size_hint = (None, None), size = (125, 125), pos = (385, 300))
+                        size_hint = (None, None), size = (125, 125), pos_hint = {'center_x' : .52, 'center_y' : .6})
             self.organs = Button(background_normal = "images/organ.png", background_down = "images/organ.png",
-                        size_hint = (None, None), size = (125, 125), pos = (510, 300))
+                        size_hint = (None, None), size = (125, 125), pos_hint = {'center_x' : .67, 'center_y' : .6})
             self.skin = Button(background_normal = "images/skin.png", background_down = "images/skin.png",
-                        size_hint = (None, None), size = (125, 125), pos = (635, 300))
+                        size_hint = (None, None), size = (125, 125), pos_hint = {'center_x' : .83, 'center_y' : .6})
 
             self.bone.on_press = self.skeleton
             self.muscle.on_press = self.muscles
@@ -490,6 +493,7 @@ class Skin(Screen):
     def gender(self):
         global gender_skin
         global side_skin
+        global x, y
         if gender_skin=="man" and side_skin=="forward":
             self.body.source="Images/Skin/skin_woman1.png"   #woman1
             self.btn_gender.background_normal = image_gender_btn_pink
@@ -503,7 +507,7 @@ class Skin(Screen):
             gender_skin="man"
             
         elif gender_skin =="man" and side_skin =="back":
-            self.body.source="Images_people/skin_woman2.png" #woman2
+            self.body.source="Images/Skin/skin_woman2.png" #woman2
             self.btn_gender.background_normal = image_gender_btn_pink
             self.btn_gender.background_down = image_gender_btn_pink
             gender_skin="woman"
@@ -517,6 +521,7 @@ class Skin(Screen):
     def rotate(self):
         global gender_skin
         global side_skin
+        global x, y
         if gender_skin=="man" and side_skin=="forward":
             self.body.source="Images/Skin/skin_man2.png"       #man2
             side_skin="back"
@@ -537,10 +542,12 @@ class Skin(Screen):
 class Skeleton(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        global x, y
+        
         main_layout = BoxLayout(orientation = "horizontal")
         layout = BoxLayout(orientation = "vertical", spacing = 5, pos_hint = {"x" : 0.2, "y" : 0.6})
 
-        self.body = Image(source = "Images/Skeleton/Bone1.png", pos = (100, -10))
+        self.body = Image(source = "Images/Skeleton/Bone1.png", pos_hint = {'center_x' : .75, "center_y" : .49}, size_hint = (None, None), size = (500, 600))
         main_layout.add_widget(self.body)
 
         self.fl_layout2 = None
@@ -558,21 +565,21 @@ class Skeleton(Screen):
         self.add_widget(main_layout)
 
     def layer(self):
+        global x, y
         if not self.fl_layout2:
             self.fl_layout2 = FloatLayout()
-
             self.frame = Button(background_normal = "images/frame.png", background_down = "images/frame.png",
-                        size_hint = (None, None), size = (635, 125), pos = (130, 300))
+                        size_hint = (None, None), size = (635, 125), pos_hint = {'center_x' : .52, 'center_y' : .6})
             self.bone = Button(background_normal = "images/Bone.png", background_down = "images/Bone.png",
-                        size_hint = (None, None), size = (125, 125), pos = (135, 300))
+                        size_hint = (None, None), size = (125, 125), pos_hint = {'center_x' : .21, 'center_y' : .6})
             self.muscle = Button(background_normal = "images/muscle.png", background_down = "images/muscle.png",
-                        size_hint = (None, None), size = (125, 125), pos = (260, 300))
+                        size_hint = (None, None), size = (125, 125), pos_hint = {'center_x' : .36, 'center_y' : .6})
             self.nerves = Button(background_normal = "images/nerves.png", background_down = "images/nerves.png",
-                        size_hint = (None, None), size = (125, 125), pos = (385, 300))
+                        size_hint = (None, None), size = (125, 125), pos_hint = {'center_x' : .52, 'center_y' : .6})
             self.organs = Button(background_normal = "images/organ.png", background_down = "images/organ.png",
-                        size_hint = (None, None), size = (125, 125), pos = (510, 300))
+                        size_hint = (None, None), size = (125, 125), pos_hint = {'center_x' : .67, 'center_y' : .6})
             self.skin = Button(background_normal = "images/skin.png", background_down = "images/skin.png",
-                        size_hint = (None, None), size = (125, 125), pos = (635, 300))
+                        size_hint = (None, None), size = (125, 125), pos_hint = {'center_x' : .83, 'center_y' : .6})
 
             self.muscle.on_press = self.muscle_layer
             self.skin.on_press = self.skin_layer
@@ -600,6 +607,7 @@ class Skeleton(Screen):
 
     def rotate(self):
         global side2
+        global x, y
         if side2 == "forward":
             self.body.source = "Images/Skeleton/Bone2.png"
             side2 = "back"
@@ -610,30 +618,32 @@ class Skeleton(Screen):
 class Print_info(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        global x, y
+
         global key
         float_layout = FloatLayout()
         
-        back_gr=Button(text = "", background_color = (0, 0, 0, 1), size_hint = (None, None), size = (600, 500), pos = (50, 50))
+        back_gr=Button(text = "", background_color = (0, 0, 0, 1), size_hint = (None, None), size = (600, 500), pos_hint = {'center_x' : .45, 'center_y' : .5})
         back_gr.opacity = 0.6
-        back_gr_white=Button(text = "", background_color = (1, 1, 1, 1), size_hint = (None, None), size = (520, 150), pos = (100, 380))
+        back_gr_white=Button(text = "", background_color = (1, 1, 1, 1), size_hint = (None, None), size = (520, 150), pos_hint = {'center_x' : .45, 'center_y' : .76})
         back_gr_white.opacity = 0.4
-        back_gr_white2=Button(text = "", background_color = (1, 1, 1, 1), size_hint = (None, None), size = (520, 105), pos = (100, 278))
+        back_gr_white2=Button(text = "", background_color = (1, 1, 1, 1), size_hint = (None, None), size = (520, 105), pos_hint = {'center_x' : .45, 'center_y' : .55})
         back_gr_white2.opacity = 0.3
-        back_gr_white3=Button(text = "", background_color = (1, 1, 1, 1), size_hint = (None, None), size = (520, 200), pos = (100, 80))
+        back_gr_white3=Button(text = "", background_color = (1, 1, 1, 1), size_hint = (None, None), size = (520, 200), pos_hint = {'center_x' : .45, 'center_y' : .3})
         back_gr_white3.opacity = 0.2
         
 
-        self.name_muscle = Label(text = key, pos=(-40,210),font_size='25sp')
-        function_text = Label(text = "Функція", pos=(-50,180),font_size='20sp')
-        self.function = Label(text = Dict_of_muscles[key]['Функція'], pos=(-40,125),font_size='18sp')
-        injury_text = Label(text = "Травми/Хвороби", pos=(-50,60),font_size='20sp')
-        self.injury = Label(text = Dict_of_muscles[key]['Травми/Хвороби'], pos=(-50,10),font_size='18sp')
-        exercices_text = Label(text = "Корисні вправи", pos=(-50, -50),font_size='20sp')
-        self.exercices = Label(text = Dict_of_muscles[key]['Корисні вправи'], pos=(-50, -100),font_size='18sp')
+        self.name_muscle = Label(text = key, pos_hint = {'center_x' : .45, 'center_y' : .85},font_size='25sp')
+        function_text = Label(text = "Функція", pos_hint = {'center_x' : .45, 'center_y' : .8},font_size='20sp')
+        self.function = Label(text = Dict_of_muscles[key]['Функція'], pos_hint = {'center_x' : .45, 'center_y' : .7},font_size='18sp')
+        injury_text = Label(text = "Травми/Хвороби", pos_hint = {'center_x' : .45, 'center_y' : .6},font_size='20sp')
+        self.injury = Label(text = Dict_of_muscles[key]['Травми/Хвороби'], pos_hint = {'center_x' : .45, 'center_y' : .5},font_size='18sp')
+        exercices_text = Label(text = "Корисні вправи", pos_hint = {'center_x' : .45, 'center_y' : .4},font_size='20sp')
+        self.exercices = Label(text = Dict_of_muscles[key]['Корисні вправи'], pos_hint = {'center_x' : .45, 'center_y' : .3},font_size='18sp')
 
         Clock.schedule_interval(self.Update, 0.1)
 
-        btn_close_bg = Button(text = "Нажми, чтобы закрыть", size_hint = (None, None), size = (190, 50), pos=(400,0), background_color = yellow)
+        btn_close_bg = Button(text = "Нажми, чтобы закрыть", size_hint = (None, None), size = (190, 50), pos_hint = {'center_x' : .65, 'center_y' : .04}, background_color = yellow)
         btn_close_bg.bind(on_press=self.close_info)
         
         float_layout.add_widget(back_gr_white)
