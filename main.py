@@ -218,19 +218,20 @@ class Muscle(Screen):
                         size_hint = (None, None), size = (125, 125), pos_hint = {'center_x' : .36, 'center_y' : .6})
             self.nerves = Button(background_normal = "images/nerves.png", background_down = "images/nerves.png",
                         size_hint = (None, None), size = (125, 125), pos_hint = {'center_x' : .52, 'center_y' : .6})
-            self.organs = Button(background_normal = "images/organ.png", background_down = "images/organ.png",
+            self.blood_ = Button(background_normal = "images/blood.png", background_down = "images/blood.png",
                         size_hint = (None, None), size = (125, 125), pos_hint = {'center_x' : .67, 'center_y' : .6})
             self.skin = Button(background_normal = "images/skin.png", background_down = "images/skin.png",
                         size_hint = (None, None), size = (125, 125), pos_hint = {'center_x' : .83, 'center_y' : .6})
 
             self.bone.on_press = self.skeleton
             self.skin.on_press = self.skin_layer
+            self.blood_.on_press = self.Blood_layer
 
             self.fl_layout2.add_widget(self.frame)
             self.fl_layout2.add_widget(self.bone)
             self.fl_layout2.add_widget(self.muscle)
             self.fl_layout2.add_widget(self.nerves)
-            self.fl_layout2.add_widget(self.organs)
+            self.fl_layout2.add_widget(self.blood_)
             self.fl_layout2.add_widget(self.skin)
             self.add_widget(self.fl_layout2)
         else:
@@ -246,6 +247,11 @@ class Muscle(Screen):
         self.remove_widget(self.fl_layout2)
         self.fl_layout2=None
         self.manager.current = 'Skin'
+
+    def Blood_layer(self):
+        self.remove_widget(self.fl_layout2)
+        self.fl_layout2=None
+        self.manager.current = 'Blood'
         
 #########################################################################################################################        
     def gender(self):
@@ -456,19 +462,20 @@ class Skin(Screen):
                         size_hint = (None, None), size = (125, 125), pos_hint = {'center_x' : .36, 'center_y' : .6})
             self.nerves = Button(background_normal = "images/nerves.png", background_down = "images/nerves.png",
                         size_hint = (None, None), size = (125, 125), pos_hint = {'center_x' : .52, 'center_y' : .6})
-            self.organs = Button(background_normal = "images/organ.png", background_down = "images/organ.png",
+            self.blood_ = Button(background_normal = "images/blood.png", background_down = "images/blood.png",
                         size_hint = (None, None), size = (125, 125), pos_hint = {'center_x' : .67, 'center_y' : .6})
             self.skin = Button(background_normal = "images/skin.png", background_down = "images/skin.png",
                         size_hint = (None, None), size = (125, 125), pos_hint = {'center_x' : .83, 'center_y' : .6})
 
             self.bone.on_press = self.skeleton
             self.muscle.on_press = self.muscles
+            self.blood_.on_press = self.Blood_layer
 
             self.fl_layout2.add_widget(self.frame)
             self.fl_layout2.add_widget(self.bone)
             self.fl_layout2.add_widget(self.muscle)
             self.fl_layout2.add_widget(self.nerves)
-            self.fl_layout2.add_widget(self.organs)
+            self.fl_layout2.add_widget(self.blood_)
             self.fl_layout2.add_widget(self.skin)
             self.add_widget(self.fl_layout2)
         else:
@@ -484,6 +491,11 @@ class Skin(Screen):
         self.remove_widget(self.fl_layout2)
         self.fl_layout2 = None
         self.manager.current = 'Muscles'
+
+    def Blood_layer(self):
+        self.remove_widget(self.fl_layout2)
+        self.fl_layout2=None
+        self.manager.current = 'Blood'
         
 #########################################################################################################################        
     def gender(self):
@@ -568,13 +580,14 @@ class Skeleton(Screen):
                         size_hint = (None, None), size = (125, 125), pos_hint = {'center_x' : .36, 'center_y' : .6})
             self.nerves = Button(background_normal = "images/nerves.png", background_down = "images/nerves.png",
                         size_hint = (None, None), size = (125, 125), pos_hint = {'center_x' : .52, 'center_y' : .6})
-            self.organs = Button(background_normal = "images/organ.png", background_down = "images/organ.png",
+            self.blood_ = Button(background_normal = "images/blood.png", background_down = "images/blood.png",
                         size_hint = (None, None), size = (125, 125), pos_hint = {'center_x' : .67, 'center_y' : .6})
             self.skin = Button(background_normal = "images/skin.png", background_down = "images/skin.png",
                         size_hint = (None, None), size = (125, 125), pos_hint = {'center_x' : .83, 'center_y' : .6})
 
             self.muscle.on_press = self.muscle_layer
             self.skin.on_press = self.skin_layer
+            self.blood_.on_press = self.Blood_layer
 
             self.fl_layout2.add_widget(self.frame)
             self.fl_layout2.add_widget(self.bone)
@@ -596,6 +609,11 @@ class Skeleton(Screen):
         self.remove_widget(self.fl_layout2)
         self.fl_layout2=None
         self.manager.current = 'Skin'
+    
+    def Blood_layer(self):
+        self.remove_widget(self.fl_layout2)
+        self.fl_layout2=None
+        self.manager.current = 'Blood'
 
     def rotate(self):
         global side2
@@ -605,6 +623,132 @@ class Skeleton(Screen):
         else:
             self.body.source = "Images/Skeleton/Bone1.png"
             side2 = "forward"
+
+class Blood(Screen):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+        main_layout = BoxLayout(orientation = "horizontal")
+        layout = BoxLayout(orientation = "vertical", spacing = 5, pos_hint = {"x" : 0.2, "y" : 0.6})
+        
+        self.fl_layout = FloatLayout()
+        self.body = Image(source = "Images/Blood/bloodm1.png", pos_hint = {'center_x' : .75, "center_y" : .49}, size_hint = (None, None), size = (500, 600))
+        self.fl_layout.add_widget(self.body)
+        main_layout.add_widget(self.fl_layout)
+        
+        self.fl_layout2 = None
+        
+        self.btn_gender = Button(background_normal = image_gender_btn_blue, background_down = image_gender_btn_blue,size_hint = (None, None), size = (90, 45), pos_hint = {"x" : .75})
+        self.btn_gender.on_press = self.gender
+        layout.add_widget(self.btn_gender)
+        
+        btn_layer = Button(background_normal = "images/blood.png", background_down = "images/blood.png", size_hint = (None, None), size = (80, 80), pos_hint = {"x" : .75})
+        btn_layer.on_press = self.layer
+        layout.add_widget(btn_layer)
+
+        btn_rotate = Button(size_hint = (None, None), size = (70, 70), pos_hint = {"x" : .75}, background_normal = "images/Rotate.png", background_down = "images/Rotate.png")
+        btn_rotate.on_press = self.rotate
+        layout.add_widget(btn_rotate)
+
+        main_layout.add_widget(layout)
+
+        self.add_widget(main_layout)
+
+    def layer(self):
+        global x, y
+        if not self.fl_layout2:
+            self.fl_layout2 = FloatLayout()
+            self.frame = Button(background_normal = "images/frame.png", background_down = "images/frame.png",
+                        size_hint = (None, None), size = (635, 125), pos_hint = {'center_x' : .52, 'center_y' : .6})
+            self.bone = Button(background_normal = "images/Bone.png", background_down = "images/Bone.png",
+                        size_hint = (None, None), size = (125, 125), pos_hint = {'center_x' : .21, 'center_y' : .6})
+            self.muscle = Button(background_normal = "images/muscle.png", background_down = "images/muscle.png",
+                        size_hint = (None, None), size = (125, 125), pos_hint = {'center_x' : .36, 'center_y' : .6})
+            self.nerves = Button(background_normal = "images/nerves.png", background_down = "images/nerves.png",
+                        size_hint = (None, None), size = (125, 125), pos_hint = {'center_x' : .52, 'center_y' : .6})
+            self.blood_ = Button(background_normal = "images/blood.png", background_down = "images/organ.png",
+                        size_hint = (None, None), size = (125, 125), pos_hint = {'center_x' : .67, 'center_y' : .6})
+            self.skin = Button(background_normal = "images/skin.png", background_down = "images/skin.png",
+                        size_hint = (None, None), size = (125, 125), pos_hint = {'center_x' : .83, 'center_y' : .6})
+
+            self.bone.on_press = self.skeleton
+            self.muscle.on_press = self.muscles
+            self.skin.on_press = self.skin_layer
+
+            self.fl_layout2.add_widget(self.frame)
+            self.fl_layout2.add_widget(self.bone)
+            self.fl_layout2.add_widget(self.muscle)
+            self.fl_layout2.add_widget(self.nerves)
+            self.fl_layout2.add_widget(self.blood_)
+            self.fl_layout2.add_widget(self.skin)
+            self.add_widget(self.fl_layout2)
+        else:
+            self.remove_widget(self.fl_layout2)
+            self.fl_layout2 = None
+
+    def skeleton(self):
+        self.remove_widget(self.fl_layout2)
+        self.fl_layout2=None
+        self.manager.current = 'Skeleton'
+
+    def muscles(self):
+        self.remove_widget(self.fl_layout2)
+        self.fl_layout2 = None
+        self.manager.current = 'Muscles'
+
+    def skin_layer(self):
+        self.remove_widget(self.fl_layout2)
+        self.fl_layout2=None
+        self.manager.current = 'Skin'
+        
+#########################################################################################################################        
+    def gender(self):
+        global gender_skin
+        global side_skin
+        if gender_skin=="man" and side_skin=="forward":
+            self.body.source="Images/Blood/bloodw1.png"   #woman1
+            self.btn_gender.background_normal = image_gender_btn_pink
+            self.btn_gender.background_down = image_gender_btn_pink
+            gender_skin="woman"
+            
+        elif gender_skin=="woman" and side_skin=="forward":
+            self.body.source="Images/Blood/bloodm1.png"   #man1
+            self.btn_gender.background_normal = image_gender_btn_blue
+            self.btn_gender.background_down = image_gender_btn_blue
+            gender_skin="man"
+            
+        elif gender_skin =="man" and side_skin =="back":
+            self.body.source="Images/Blood/bloodw2.png" #woman2
+            self.btn_gender.background_normal = image_gender_btn_pink
+            self.btn_gender.background_down = image_gender_btn_pink
+            gender_skin="woman"
+            
+        elif gender_skin=="woman" and side_skin =="back":
+            self.body.source="Images/Blood/bloodm2.png"   #man2
+            self.btn_gender.background_normal = image_gender_btn_blue
+            self.btn_gender.background_down = image_gender_btn_blue
+            gender_skin="man"
+#################################################################################################################################################
+    def rotate(self):
+        global gender_skin
+        global side_skin
+        if gender_skin=="man" and side_skin=="forward":
+            self.body.source="Images/Blood/bloodm2.png"       #man2
+            side_skin="back"
+
+        elif gender_skin=="woman" and side_skin=="forward":
+            self.body.source="Images/Blood/bloodw2.png"     #woman2
+            side_skin="back"
+
+        elif gender_skin =="man" and side_skin =="back":
+            self.body.source="Images/Blood/bloodm1.png"   #man1
+            side_skin="forward"
+
+        elif gender_skin=="woman" and side_skin =="back":
+            self.body.source="Images/Blood/bloodw1.png"     #woman1
+            side_skin="forward"
+
+###########################################################################################################################
 
 class Print_info(Screen):
     def __init__(self, **kwargs):
@@ -665,6 +809,7 @@ class Screen(App):
         sm.add_widget(Muscle(name = 'Muscles'))
         sm.add_widget(Skin(name = 'Skin'))
         sm.add_widget(Skeleton(name='Skeleton'))
+        sm.add_widget(Blood(name='Blood'))
         sm.add_widget(Print_info(name='Print_info'))
         
         return sm
